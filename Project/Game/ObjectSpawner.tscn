@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd68as67e37vf"]
+
+[ext_resource type="Script" uid="uid://ptji8oqpdc3i" path="res://Game/object_spawner.gd" id="1_bfg0f"]
+[ext_resource type="PackedScene" uid="uid://b78ynr3t8xgwi" path="res://Game/Items/Crate.tscn" id="2_c18fy"]
+[ext_resource type="Script" uid="uid://cih3mwowa30r" path="res://addons/radial_progress/RadialProgress.gd" id="3_jy2xh"]
+
+[node name="Marker2D" type="Marker2D"]
+script = ExtResource("1_bfg0f")
+default_object_scene = ExtResource("2_c18fy")
+
+[node name="RadialProgress" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("3_jy2xh")
+radius = 25.0
+progress = 75.0
+thickness = 15.0
+bg_color = Color(0.941176, 0.929412, 0.917647, 1)
+bar_color = Color(0.501961, 0.215686, 0.168627, 1)
+ring = true
+nb_points = 25
+metadata/_custom_type_script = "uid://cih3mwowa30r"

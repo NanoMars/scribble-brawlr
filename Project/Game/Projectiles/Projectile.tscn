@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://b35q5vj436vhq"]
+
+[ext_resource type="Texture2D" uid="uid://cq1qefhiomr3s" path="res://Assets/Bow/Pencil.png" id="1_ab07i"]
+[ext_resource type="Script" uid="uid://cgv2sge2qnw1f" path="res://Game/Projectiles/projectile_destroy.gd" id="1_yigit"]
+[ext_resource type="Texture2D" uid="uid://cl7hrhbku4dnx" path="res://Assets/Particle (2).png" id="3_lwawk"]
+
+[sub_resource type="Curve" id="Curve_2qbmb"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.0109439, 0), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_eigpk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0998632, 0.793618), 1.96125, 1.96125, 0, 0, Vector2(0.512996, 1), 0.0, 0.0, 0, 0, Vector2(0.923393, 0.803937), -1.63231, -1.63231, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["damaging"]]
+mass = 0.1
+angular_damp = 25.0
+script = ExtResource("1_yigit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_ab07i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-16, -4, -16, 4, 11, 4, 18, 0, 11, -4)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("3_lwawk")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(32, 8)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+damping_min = 400.0
+damping_max = 400.0
+damping_curve = SubResource("Curve_2qbmb")
+angle_min = -835.0
+angle_max = 720.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_eigpk")

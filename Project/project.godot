@@ -1,0 +1,53 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="scribble brawlr"
+run/main_scene="uid://ca8pjb2vr83ab"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="uid://c1xqxhmpx4qdy"
+
+[autoload]
+
+PlayerManager="*res://scripts/player_manager.gd"
+ColourPalette="*res://scripts/colour_palette.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fancy_editor_sounds/plugin.cfg", "res://addons/radial_progress/plugin.cfg")
+
+[global_group]
+
+player_spawns=""
+obstacles=""
+game_root=""
+crates=""
+damaging=""
+harmless=""
+
+[layer_names]
+
+2d_physics/layer_1="World"
+
+[physics]
+
+2d/default_gravity=0.0
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

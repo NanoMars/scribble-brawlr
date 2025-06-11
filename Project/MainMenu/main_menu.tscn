@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca8pjb2vr83ab"]
+
+[ext_resource type="Texture2D" uid="uid://cydc4l614e3hy" path="res://Assets/PrinterPaper.jpg" id="1_kbpwf"]
+[ext_resource type="Script" uid="uid://rpgvmmvlfauk" path="res://scripts/logo_animation.gd" id="2_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://dge8y1xl5l0l4" path="res://Assets/logo/Asset 1Skribble Brawlr.png" id="2_kbpwf"]
+[ext_resource type="Script" uid="uid://b36ecxw5085c5" path="res://MainMenu/player_menu.gd" id="3_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://b8lnhgpiyfuxp" path="res://MainMenu/player_section.tscn" id="4_0qgbs"]
+[ext_resource type="Script" uid="uid://baucwsjy2tpo1" path="res://MainMenu/join_label.gd" id="5_adu2g"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kbpwf")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="logo" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="logo"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="Control" type="Control" parent="logo/CenterContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="logo/CenterContainer/Control"]
+layout_mode = 0
+texture = ExtResource("2_kbpwf")
+expand_mode = 1
+stretch_mode = 3
+script = ExtResource("2_1ehe0")
+
+[node name="ColorRect" type="ColorRect" parent="logo"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(1, 1, 1, 0)
+
+[node name="PlayerMenu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="PlayerMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(1, 1, 1, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.4
+theme_override_constants/separation = 0
+script = ExtResource("3_1ehe0")
+player_section = ExtResource("4_0qgbs")
+
+[node name="ColorRect2" type="ColorRect" parent="PlayerMenu/HBoxContainer"]
+custom_minimum_size = Vector2(122, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+color = Color(1, 1, 1, 0)
+script = ExtResource("5_adu2g")
+
+[node name="Label" type="Label" parent="PlayerMenu/HBoxContainer/ColorRect2"]
+custom_minimum_size = Vector2(122, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+text = "Press any button to join!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

@@ -1,0 +1,40 @@
+[gd_scene load_steps=13 format=3 uid="uid://bp7vvm4pad43o"]
+
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_tev6l"]
+[ext_resource type="Script" uid="uid://dvn4dh4lhml54" path="res://Game/Items/bow.gd" id="2_pc8pi"]
+[ext_resource type="Texture2D" uid="uid://davmfg0b585bp" path="res://Assets/Bow/bow_1.png" id="3_tospe"]
+[ext_resource type="Texture2D" uid="uid://bxr1gfm40irnv" path="res://Assets/Bow/Bow_2.png" id="4_gm7d2"]
+[ext_resource type="Texture2D" uid="uid://djeug82630wf3" path="res://Assets/Bow/Bow_3.png" id="5_70q7l"]
+[ext_resource type="Texture2D" uid="uid://cfbinoqjn7a6g" path="res://Assets/Bow/bow_4.png" id="6_se4th"]
+[ext_resource type="Texture2D" uid="uid://1y0bi6r83qb0" path="res://Assets/Bow/bow_5.png" id="7_o0wmy"]
+[ext_resource type="Texture2D" uid="uid://dy0r63q2bwpm3" path="res://Assets/Bow/bow_6.png" id="8_l880y"]
+[ext_resource type="Texture2D" uid="uid://cemehf88atrfc" path="res://Assets/Bow/Bow.png" id="9_gm7d2"]
+[ext_resource type="PackedScene" uid="uid://b35q5vj436vhq" path="res://Game/Projectiles/Projectile.tscn" id="10_70q7l"]
+
+[sub_resource type="Curve" id="Curve_tospe"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.56649, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gm7d2"]
+radius = 7.0
+height = 40.0
+
+[node name="RigidBody2D" instance=ExtResource("1_tev6l")]
+angular_damp = 25.1
+script = ExtResource("2_pc8pi")
+empty_texture = ExtResource("9_gm7d2")
+animation_textures = Array[Texture]([ExtResource("3_tospe"), ExtResource("4_gm7d2"), ExtResource("5_70q7l"), ExtResource("6_se4th"), ExtResource("7_o0wmy"), ExtResource("8_l880y")])
+animation_curve = SubResource("Curve_tospe")
+animation_duration = 0.3
+ammo = 3
+projectile_scene = ExtResource("10_70q7l")
+projectile_speed = 1500.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("9_gm7d2")
+region_enabled = false
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, 0)
+rotation = 0.0
+shape = SubResource("CapsuleShape2D_gm7d2")

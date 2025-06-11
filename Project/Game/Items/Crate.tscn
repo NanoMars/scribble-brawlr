@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://b78ynr3t8xgwi"]
+
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_i6kyw"]
+[ext_resource type="Texture2D" uid="uid://1lfre2ux5ba7" path="res://Assets/Crate.png" id="2_6ekhb"]
+[ext_resource type="Script" uid="uid://roqcogexgkr4" path="res://Game/Items/crate.gd" id="2_qiomx"]
+[ext_resource type="PackedScene" uid="uid://bp7vvm4pad43o" path="res://Game/Items/Bow.tscn" id="3_ocrun"]
+[ext_resource type="PackedScene" uid="uid://r60yg0fu42l0" path="res://Game/Items/Boomerang.tscn" id="4_lqvrg"]
+[ext_resource type="Texture2D" uid="uid://2f7p67ugfsyc" path="res://Assets/Plank Particle.png" id="4_qiomx"]
+[ext_resource type="PackedScene" uid="uid://boad6ln55oh" path="res://Game/Items/sniper.tscn" id="5_rofx0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qiomx"]
+size = Vector2(42.0002, 41.9998)
+
+[node name="RigidBody2D" groups=["crates"] instance=ExtResource("1_i6kyw")]
+script = ExtResource("2_qiomx")
+break_threshold = 30.0
+break_particles_speed_variation = 1.5
+break_particles_multiplier = 1.5
+crate_contents = Array[PackedScene]([ExtResource("3_ocrun"), ExtResource("4_lqvrg"), ExtResource("5_rofx0")])
+show_ammo_progress = false
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_6ekhb")
+region_enabled = false
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_qiomx")
+
+[node name="CPUParticles2D" parent="." index="2"]
+position = Vector2(0, 0)
+texture = ExtResource("4_qiomx")
+emission_shape = 3
+emission_rect_extents = Vector2(21, 21)
+spread = 60.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+damping_min = 15.0
+damping_max = 30.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+color = Color(1, 1, 1, 1)
+hue_variation_min = 0.0
+hue_variation_max = 0.0

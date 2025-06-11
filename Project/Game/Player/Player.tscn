@@ -1,0 +1,119 @@
+[gd_scene load_steps=20 format=3 uid="uid://di4furit0fybd"]
+
+[ext_resource type="Script" uid="uid://bfvkj3fd6anh8" path="res://Game/Player/player.gd" id="1_3qydi"]
+[ext_resource type="Texture2D" uid="uid://dcptd7eu0ujv1" path="res://Assets/Characters/red_character.png" id="2_75cta"]
+[ext_resource type="Texture2D" uid="uid://cj67txw0m14nc" path="res://Assets/Characters/purple_character.png" id="3_ckjsq"]
+[ext_resource type="Texture2D" uid="uid://bla7le4p0q7yx" path="res://Assets/teardrop_red.png" id="3_i4nf8"]
+[ext_resource type="Texture2D" uid="uid://c62lr6eb078mi" path="res://Assets/Characters/yellow_character.png" id="4_66v2b"]
+[ext_resource type="Texture2D" uid="uid://dn2ijmb6ioi6e" path="res://Assets/Characters/green_character.png" id="5_32fjh"]
+[ext_resource type="Texture2D" uid="uid://nw7xe067nmei" path="res://Assets/Characters/red_hand.png" id="6_tnxc6"]
+[ext_resource type="Texture2D" uid="uid://b3cp4i0gngaap" path="res://Assets/Characters/purple_hand.png" id="7_3j14s"]
+[ext_resource type="Texture2D" uid="uid://dqo34eph0kl7r" path="res://Assets/Characters/yellow_hand.png" id="8_1dcqm"]
+[ext_resource type="Texture2D" uid="uid://da5r7jsacdw76" path="res://Assets/Characters/green_hand.png" id="9_sqpsa"]
+[ext_resource type="Texture2D" uid="uid://diumr6pnk7gh5" path="res://Assets/teardrop_purple.png" id="11_32fjh"]
+[ext_resource type="Texture2D" uid="uid://du3kqivc286dg" path="res://Assets/teardrop_yellow.png" id="12_tnxc6"]
+[ext_resource type="Texture2D" uid="uid://c7suillw3dfa0" path="res://Assets/teardrop_green.png" id="13_3j14s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q3lat"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
+radius = 32.0
+
+[sub_resource type="Curve" id="Curve_i4nf8"]
+_data = [Vector2(0, 0.488322), 0.0, 2.70623, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0103806), -6.58546, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Theme" id="Theme_ee8ni"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6upfr"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_px0gh"]
+bg_color = Color(0.988235, 0.360784, 0.396078, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("pick_up_collision_shape")]
+motion_mode = 1
+script = ExtResource("1_3qydi")
+ammo_reset_duration = 1.5
+pick_up_collision_shape = NodePath("Area2D/CollisionShape2D")
+drop_impulse_strength = 350.0
+max_drop_time = 0.25
+player_textures = Array[Texture]([ExtResource("2_75cta"), ExtResource("3_ckjsq"), ExtResource("4_66v2b"), ExtResource("5_32fjh")])
+hand_textures = Array[Texture]([ExtResource("6_tnxc6"), ExtResource("7_3j14s"), ExtResource("8_1dcqm"), ExtResource("9_sqpsa")])
+blood_textures = Array[Texture]([ExtResource("3_i4nf8"), ExtResource("11_32fjh"), ExtResource("12_tnxc6"), ExtResource("13_3j14s")])
+look_dampening = 3.5
+look_speed = 60.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_75cta")
+region_rect = Rect2(22, 1046, 84, 84)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_q3lat")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(32, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tok1r")
+
+[node name="Hand1" type="Sprite2D" parent="."]
+position = Vector2(18, 10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_tnxc6")
+region_rect = Rect2(175, 1071, 35, 35)
+
+[node name="Hand2" type="Sprite2D" parent="."]
+position = Vector2(18, -10)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_tnxc6")
+flip_v = true
+region_rect = Rect2(175, 1071, 35, 35)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 35
+texture = ExtResource("3_i4nf8")
+lifetime = 0.35
+one_shot = true
+explosiveness = 0.95
+emission_shape = 1
+emission_sphere_radius = 13.0
+particle_flag_align_y = true
+spread = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_i4nf8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(60, 0)
+hit_from_inside = true
+
+[node name="Node2D" type="Node2D" parent="."]
+top_level = true
+
+[node name="ProgressBar" type="ProgressBar" parent="Node2D"]
+offset_left = -28.0
+offset_top = -42.0
+offset_right = 28.0
+offset_bottom = -31.0
+theme = SubResource("Theme_ee8ni")
+theme_override_styles/background = SubResource("StyleBoxFlat_6upfr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_px0gh")
+value = 50.0
+show_percentage = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../Node2D")
+update_rotation = false
+update_scale = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

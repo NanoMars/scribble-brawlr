@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://clc6qcbcncmdk"]
+
+[ext_resource type="Script" uid="uid://wygok2bemaos" path="res://Intermission/loser_scene.gd" id="1_ed5cc"]
+[ext_resource type="Texture2D" uid="uid://v3c1ostgq56d" path="res://Assets/PlayerSVG/redhires.png" id="1_nv6n5"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+script = ExtResource("1_ed5cc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_nv6n5")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+text = "2"
+horizontal_alignment = 1

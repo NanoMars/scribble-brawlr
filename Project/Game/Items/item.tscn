@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://bp5jmne6lay2g"]
+
+[ext_resource type="Script" uid="uid://j4qxh2r1k0g3" path="res://Game/Items/item.gd" id="1_513kx"]
+[ext_resource type="Texture2D" uid="uid://q8caclgol07n" path="res://Assets/Party Popper.png" id="2_cyddd"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_modij"]
+points = PackedVector2Array(-16.0001, -16.9999, 14.9999, -20.0001, 1.00007, 19)
+
+[sub_resource type="Curve" id="Curve_i04y7"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 100), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_cyddd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.805555, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xe8em"]
+offsets = PackedFloat32Array(0, 0.896, 0.988)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_modij"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="RigidBody2D" type="RigidBody2D"]
+linear_damp = 10.0
+angular_damp = 25.0
+script = ExtResource("1_513kx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.350304, 0.350304)
+texture = ExtResource("2_cyddd")
+region_enabled = true
+region_rect = Rect2(18, 15, 81, 108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("ConvexPolygonShape2D_modij")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+z_as_relative = false
+position = Vector2(19, 0)
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.95
+lifetime_randomness = 0.3
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1000.0
+initial_velocity_max = 1200.0
+damping_min = 30.0
+damping_max = 45.0
+damping_curve = SubResource("Curve_i04y7")
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_cyddd")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_xe8em")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_modij")

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://symkawjy038p"]
+
+[ext_resource type="Script" uid="uid://cdjrq4c2hfx3s" path="res://Game/Gamemodes/deathmatch_ui_score.gd" id="1_a5oyq"]
+[ext_resource type="Texture2D" uid="uid://cj67txw0m14nc" path="res://Assets/Characters/purple_character.png" id="1_yd1n0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jcyx"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="VBoxContainer" type="VBoxContainer" node_paths=PackedStringArray("score_label", "icon_rect")]
+theme_override_constants/separation = -15
+script = ExtResource("1_a5oyq")
+score_label = NodePath("Control/Label")
+icon_rect = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+layout_mode = 2
+texture = ExtResource("1_yd1n0")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -29.0
+offset_right = 12.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 29)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 42
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = -20
+theme_override_constants/margin_right = -20
+
+[node name="Panel" type="Panel" parent="Control/Label/MarginContainer"]
+z_index = -1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6jcyx")

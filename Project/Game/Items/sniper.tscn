@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://boad6ln55oh"]
+
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_kbhld"]
+[ext_resource type="Script" uid="uid://c0yf6ajjm2apl" path="res://Game/Items/sniper.gd" id="2_f0ca3"]
+[ext_resource type="Texture2D" uid="uid://m0h62db7iylu" path="res://Assets/Sniper.png" id="3_jkhhn"]
+[ext_resource type="Texture2D" uid="uid://bnc8f4ttudnny" path="res://Assets/Smoke Particle.png" id="5_jkhhn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_egvnq"]
+radius = 7.0
+height = 54.0
+
+[sub_resource type="Curve" id="Curve_egvnq"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_8a0ok"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0506156, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.6247, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_jkhhn"]
+offsets = PackedFloat32Array(0, 0.78355, 1)
+colors = PackedColorArray(0.54099, 0.54099, 0.54099, 1, 0.584706, 0.584706, 0.584706, 1, 1, 1, 1, 1)
+
+[node name="RigidBody2D" node_paths=PackedStringArray("lines") instance=ExtResource("1_kbhld")]
+script = ExtResource("2_f0ca3")
+ammo = 2
+holding_look_dampening = 10.0
+holding_look_speed = 15.0
+lines = [NodePath("Line2D"), NodePath("Line2D2")]
+
+[node name="Line2D" type="Line2D" parent="." index="0"]
+points = PackedVector2Array(26, 0, 2300, 0)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="." index="1"]
+points = PackedVector2Array(26, 0, 2300, 0)
+width = 5.0
+default_color = Color(1, 0, 0, 0.180392)
+
+[node name="Sprite2D" parent="." index="2"]
+scale = Vector2(0.454773, 0.454773)
+texture = ExtResource("3_jkhhn")
+region_rect = Rect2(43, 3, 45, 122)
+
+[node name="CollisionShape2D" parent="." index="3"]
+shape = SubResource("CapsuleShape2D_egvnq")
+
+[node name="RayCast2D" type="RayCast2D" parent="." index="5"]
+position = Vector2(26, 0)
+target_position = Vector2(2300, 0)
+
+[node name="gunparticles" type="CPUParticles2D" parent="." index="6"]
+position = Vector2(26, 0)
+emitting = false
+texture = ExtResource("5_jkhhn")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+spread = 12.89
+gravity = Vector2(0, 0)
+initial_velocity_min = 79.68
+initial_velocity_max = 497.29
+angle_min = -360.0
+angle_max = 360.0
+angle_curve = SubResource("Curve_egvnq")
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_8a0ok")
+color_ramp = SubResource("Gradient_jkhhn")

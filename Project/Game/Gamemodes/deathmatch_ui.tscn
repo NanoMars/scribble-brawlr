@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlm37i7i1a65j"]
+
+[ext_resource type="Script" uid="uid://c6w6i1eq05ecb" path="res://Game/Gamemodes/deathmatch_ui.gd" id="1_6jcyx"]
+[ext_resource type="PackedScene" uid="uid://symkawjy038p" path="res://Game/Gamemodes/deathmatch_ui_score.tscn" id="1_jpy70"]
+[ext_resource type="PackedScene" uid="uid://ct1muubjadip" path="res://Game/Gamemodes/game_clock.tscn" id="3_m2c13"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("score_ui_container", "clock_label")]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6jcyx")
+score_ui = ExtResource("1_jpy70")
+score_ui_container = NodePath("MarginContainer/VBoxContainer/CenterContainer/HBoxContainer")
+clock_label = NodePath("MarginContainer/VBoxContainer/CenterContainer2/PanelContainer/HBoxContainer/Label")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="CenterContainer2" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="PanelContainer" parent="MarginContainer/VBoxContainer/CenterContainer2" instance=ExtResource("3_m2c13")]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[editable path="MarginContainer/VBoxContainer/CenterContainer2/PanelContainer"]

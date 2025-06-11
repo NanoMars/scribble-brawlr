@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://r60yg0fu42l0"]
+
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_5pjdu"]
+[ext_resource type="Script" uid="uid://s4qw3qksb6e7" path="res://Game/Items/boomerang.gd" id="2_dxp6g"]
+[ext_resource type="Texture2D" uid="uid://cian7dfjn0gce" path="res://Assets/Boomerang Photopea.png" id="2_t2xwn"]
+[ext_resource type="Script" uid="uid://bfaapnuc1ajl2" path="res://Game/Items/boomerang_projectile_script.gd" id="3_dxp6g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxp6g"]
+height = 42.1896
+
+[node name="RigidBody2D" instance=ExtResource("1_5pjdu")]
+script = ExtResource("2_dxp6g")
+usage_duration = 6.0
+projectile_script = ExtResource("3_dxp6g")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 0.0
+texture = ExtResource("2_t2xwn")
+region_rect = Rect2(11, 34, 103, 59)
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.47131
+shape = SubResource("CapsuleShape2D_dxp6g")

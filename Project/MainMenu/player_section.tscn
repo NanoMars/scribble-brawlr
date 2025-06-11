@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8lnhgpiyfuxp"]
+
+[ext_resource type="Script" uid="uid://45p6ewpm8fnm" path="res://MainMenu/player_section.gd" id="1_53xgr"]
+[ext_resource type="Texture2D" uid="uid://b2k0odyea8cy4" path="res://Assets/Paper.png" id="1_ox7ty"]
+[ext_resource type="PackedScene" uid="uid://bgbw30t3t305q" path="res://Game/game.tscn" id="2_ky44i"]
+[ext_resource type="Texture2D" uid="uid://7p1vdvgpy35k" path="res://Assets/Paper Red.png" id="4_sh35a"]
+[ext_resource type="Texture2D" uid="uid://dakffwilf1alw" path="res://Assets/Paper Purple.png" id="5_2nbhg"]
+[ext_resource type="Texture2D" uid="uid://ddpsn6wslvkw5" path="res://Assets/Paper Yellow.png" id="6_jt3n3"]
+[ext_resource type="Texture2D" uid="uid://bfxa12cfn3fxu" path="res://Assets/Paper Green.png" id="7_fa62q"]
+
+[node name="NinePatchRect" type="NinePatchRect" node_paths=PackedStringArray("player_label", "press_start_label")]
+offset_right = 100.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("1_ox7ty")
+region_rect = Rect2(0, 0, 1080, 1080)
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+script = ExtResource("1_53xgr")
+spring_strength = 40.0
+spring_dampening = 3.0
+player_label = NodePath("MarginContainer/VBoxContainer/Player id")
+press_start_label = NodePath("MarginContainer/VBoxContainer/Label2")
+game_scene = ExtResource("2_ky44i")
+texture_colors = Array[Texture]([ExtResource("4_sh35a"), ExtResource("5_2nbhg"), ExtResource("6_jt3n3"), ExtResource("7_fa62q")])
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Player id" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Player unknown"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "press a to begin or b to leave"
+horizontal_alignment = 1

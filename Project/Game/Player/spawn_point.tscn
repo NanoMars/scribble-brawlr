@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnxht1kseyl6x"]
+
+[ext_resource type="Script" uid="uid://cpypdvdu83r2g" path="res://Game/Player/spawn_point.gd" id="1_r8f1l"]
+[ext_resource type="Script" uid="uid://cih3mwowa30r" path="res://addons/radial_progress/RadialProgress.gd" id="2_3lm7t"]
+[ext_resource type="PackedScene" uid="uid://di4furit0fybd" path="res://Game/Player/Player.tscn" id="2_xhu8j"]
+
+[node name="SpawnPoint" type="Marker2D" groups=["player_spawns"]]
+script = ExtResource("1_r8f1l")
+player_scene = ExtResource("2_xhu8j")
+
+[node name="RadialProgress" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_3lm7t")
+radius = 30.0
+progress = 50.0
+thickness = 15.0
+bg_color = Color(0.94233, 0.92856, 0.918604, 1)
+ring = true
+nb_points = 16
+metadata/_custom_type_script = "uid://cih3mwowa30r"
