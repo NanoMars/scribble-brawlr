@@ -8,7 +8,7 @@ func _process(_delta: float) -> void:
 	var round_time = game_root.round_time
 	if tied and round_time <= 0:
 		if time_label:
-			time_label.text = "OVERTIME"
+			time_label.text = "OVERTIME "
 			time_label.add_theme_color_override("font_color", Color.RED)
 			return
 	
