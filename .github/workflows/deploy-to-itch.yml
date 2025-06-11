@@ -1,0 +1,33 @@
+name: Deploy Web Build to Itch.io
+
+on:
+  push:
+    branches:
+      - gh-pages
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+
+      - name: Zip Web Build
+        run: |
+          zip -r Web.zip . -x ".git/*"
+
+      - name: Install Butler
+        run: |
+          wget -O butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip -d butler
+          chmod +x butler/butler
+          sudo mv butler/butler /usr/local/bin/butler
+
+      - name: Deploy to Itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCHIO_API_KEY }}
+        run: |
+          butler push Web.zip nanomars/scribble-brawlr:html5 --userversion $(date +'%Y-%m-%d-%H%M')
