@@ -1,5 +1,3 @@
-
-
 <div align="center">
   <a href="https://nanomars.github.io/scribble-brawlr/">
     <picture>
@@ -13,6 +11,9 @@
   <div>
     <a href="https://nanomars.github.io/scribble-brawlr/">
       <img src="Play on Web.svg" alt="Play on Web" height="38">
+    </a>
+    <a href="https://nanomars.itch.io/scribble-brawlr">
+      <img src="https://static.itch.io/images/badge.svg" alt="Play on Itch.io" height="38">
     </a>
   </div>
 
