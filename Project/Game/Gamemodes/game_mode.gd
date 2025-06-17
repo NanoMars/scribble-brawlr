@@ -11,7 +11,7 @@ var spawn_points: Dictionary = {}
 @export var game_start_delay: float = 1.5
 @export var gamemode_ui: PackedScene
 var gamemode_ui_instance: Node = null
-@export var round_duration: float = 90.0
+@export var round_duration: float = 10.0
 @export var box_spawn_goal: int = 7
 @export var box_spawn_delay: float = 1
 @export var initial_boxes: int = 4

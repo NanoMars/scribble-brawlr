@@ -39,6 +39,9 @@ size_flags_horizontal = 4
 [node name="PanelContainer" parent="MarginContainer/VBoxContainer/CenterContainer2" instance=ExtResource("3_a0miv")]
 layout_mode = 2
 
+[node name="Label" parent="MarginContainer/VBoxContainer/CenterContainer2/PanelContainer/HBoxContainer" index="1"]
+text = "OVERTIME"
+
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
