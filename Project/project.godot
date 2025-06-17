@@ -19,6 +19,7 @@ config/icon="uid://c1xqxhmpx4qdy"
 
 PlayerManager="*res://scripts/player_manager.gd"
 ColourPalette="*res://scripts/colour_palette.gd"
+GameManager="*res://Game/game_manager.gd"
 
 [display]
 

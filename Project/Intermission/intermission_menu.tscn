@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://n5m0r5an31si"]
+[gd_scene load_steps=12 format=3 uid="uid://n5m0r5an31si"]
 
 [ext_resource type="Script" uid="uid://dbaxdj28ko3qr" path="res://Intermission/intermission_menu.gd" id="1_71l6g"]
 [ext_resource type="Texture2D" uid="uid://cydc4l614e3hy" path="res://Assets/PrinterPaper.jpg" id="1_ov2wj"]
@@ -9,13 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b5rcub1nud8rj" path="res://Assets/PlayerSVG/yellowhires.png" id="4_pnod0"]
 [ext_resource type="Texture2D" uid="uid://dv04x0qauog1f" path="res://Assets/SplashScreens/deathmatch.png" id="5_71l6g"]
 [ext_resource type="Texture2D" uid="uid://bb1uvluoyrxuo" path="res://Assets/PlayerSVG/greenhires.png" id="5_wjgn0"]
-[ext_resource type="PackedScene" uid="uid://bgbw30t3t305q" path="res://Game/Maps/Map 1.tscn" id="7_1x0no"]
 [ext_resource type="PackedScene" uid="uid://ca8pjb2vr83ab" path="res://MainMenu/main_menu.tscn" id="7_wjgn0"]
-[ext_resource type="PackedScene" uid="uid://bfb3fykeykh1k" path="res://Game/Maps/Map 2.tscn" id="8_ksbkj"]
-[ext_resource type="Script" uid="uid://gsaw2dt0y5gh" path="res://Game/Gamemodes/deathmatch.gd" id="8_m6y1o"]
-[ext_resource type="Script" uid="uid://em0exjh2iing" path="res://Game/Gamemodes/King/king.gd" id="10_gt1u3"]
 [ext_resource type="PackedScene" uid="uid://clc6qcbcncmdk" path="res://Intermission/loser_scene.tscn" id="10_pnod0"]
-[ext_resource type="Texture2D" uid="uid://btyxi7wmaecdf" path="res://Assets/SplashScreens/King (1).png" id="11_ksbkj"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("winner_icon", "winner_label", "banner_label", "loser_container", "countdown_label", "game_banner")]
 layout_mode = 3
@@ -33,11 +28,6 @@ loser_scene = ExtResource("10_pnod0")
 loser_container = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/LoserContainer")
 countdown_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/CountdownLabel")
 game_banner = NodePath("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/NinePatchRect/MarginContainer/VBoxContainer/GameBanner")
-maps = Array[PackedScene]([ExtResource("7_1x0no"), ExtResource("8_ksbkj")])
-game_modes = Dictionary[Script, Texture]({
-ExtResource("8_m6y1o"): ExtResource("5_71l6g"),
-ExtResource("10_gt1u3"): ExtResource("11_ksbkj")
-})
 main_menu_screen = ExtResource("7_wjgn0")
 
 [node name="TextureRect" type="TextureRect" parent="."]

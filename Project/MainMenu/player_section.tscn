@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8lnhgpiyfuxp"]
+[gd_scene load_steps=7 format=3 uid="uid://b8lnhgpiyfuxp"]
 
 [ext_resource type="Script" uid="uid://45p6ewpm8fnm" path="res://MainMenu/player_section.gd" id="1_53xgr"]
 [ext_resource type="Texture2D" uid="uid://b2k0odyea8cy4" path="res://Assets/Paper.png" id="1_ox7ty"]
-[ext_resource type="PackedScene" uid="uid://bgbw30t3t305q" path="res://Game/Maps/Map 1.tscn" id="2_ky44i"]
 [ext_resource type="Texture2D" uid="uid://7p1vdvgpy35k" path="res://Assets/Paper Red.png" id="4_sh35a"]
 [ext_resource type="Texture2D" uid="uid://dakffwilf1alw" path="res://Assets/Paper Purple.png" id="5_2nbhg"]
 [ext_resource type="Texture2D" uid="uid://ddpsn6wslvkw5" path="res://Assets/Paper Yellow.png" id="6_jt3n3"]
@@ -25,7 +24,6 @@ spring_strength = 40.0
 spring_dampening = 3.0
 player_label = NodePath("MarginContainer/VBoxContainer/Player id")
 press_start_label = NodePath("MarginContainer/VBoxContainer/Label2")
-game_scene = ExtResource("2_ky44i")
 texture_colors = Array[Texture]([ExtResource("4_sh35a"), ExtResource("5_2nbhg"), ExtResource("6_jt3n3"), ExtResource("7_fa62q")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -16,8 +16,6 @@ var spring_velocity: float = 0.0
 @export var player_label: Label
 @export var press_start_label: Label
 
-@export var game_scene: PackedScene
-
 @export var texture_colors: Array[Texture] = [null, null, null, null]
 
 func _ready() -> void:
@@ -35,7 +33,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A) and player_id == 1:
 		if not start_button_held and PlayerManager.joined_players.size() >= 2:
-			get_tree().change_scene_to_packed(game_scene)
+			GameManager.start_game_round()
 			start_button_held = true
 	else:
 		start_button_held = false

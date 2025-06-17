@@ -12,12 +12,9 @@ extends Control
 @onready var countdown_timer: float = countdown_duration
 @export var game_banner: TextureRect
 
-@export var maps: Array[PackedScene]
-@export var game_modes: Dictionary[Script, Texture]
-
-@onready var picked_map: PackedScene = maps.pick_random()
-@onready var picked_game_mode: Script = game_modes.keys().pick_random()
-@onready var game_banner_texture: Texture = game_modes[picked_game_mode]
+@onready var picked_map: PackedScene = GameManager.maps.pick_random()
+@onready var picked_game_mode: Script = GameManager.game_modes.keys().pick_random()
+@onready var game_banner_texture: Texture = GameManager.game_modes[picked_game_mode]
 
 @export var main_menu_screen: PackedScene
 
@@ -61,11 +58,7 @@ func _process(delta):
 
 	if countdown_timer <= 0:
 		#get_tree().change_scene_to_packed(maps.pick_random())
-		var new_scene = picked_map.instantiate()
-		new_scene.set_script(picked_game_mode)
-		get_tree().root.add_child(new_scene)
-		get_tree().current_scene.queue_free()
-		get_tree().current_scene = new_scene
+		GameManager.start_game_round(picked_map, picked_game_mode)
 		
 
 		return
