@@ -37,6 +37,8 @@ func release(obstacle_distance: float):
 		$gunparticles.emitting = true
 		ammo -= 1
 		holder.ammo_progress = (float(ammo) / float(initial_ammo)) * 100
+		if ammo <= 0:
+			depleted = true
 		var dir_to_player = (raycast.get_collision_point()  - raycast.global_position).normalized() * -2000
 		if raycast.is_colliding():
 			var hit = raycast.get_collider()

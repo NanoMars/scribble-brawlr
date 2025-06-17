@@ -30,8 +30,12 @@ func release(obstacle_distance: float):
 		ammo -= 1
 		progress = 0.0
 		holder.ammo_progress = (float(ammo) / float(initial_ammo)) * 100
+		if ammo <= 0:
+			depleted = true
+			
 
 func _process(delta: float) -> void:
+	super._process(delta)
 	if ammo <= 0:
 		$Sprite2D.texture = empty_texture
 		return

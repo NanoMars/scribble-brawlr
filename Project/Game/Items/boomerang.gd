@@ -37,13 +37,15 @@ func release(obstacle_distance: float):
 	pass
 
 func _process(delta: float) -> void:
+	super._process(delta)
 	visible = !currently_out if is_held else true
 	if currently_out:
 		usage_time += delta
-		if usage_time >= usage_duration and !currently_out:
-			print("kill boomerang")
 		if holder:
 			holder.ammo_progress = (1 - usage_time / usage_duration) * 100
+		if usage_time >= usage_duration and boomerang_instance and is_instance_valid(boomerang_instance):
+			depleted = true
+
 
 func update_state():
 	super.update_state()

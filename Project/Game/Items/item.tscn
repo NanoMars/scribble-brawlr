@@ -1,7 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp5jmne6lay2g"]
+[gd_scene load_steps=14 format=3 uid="uid://bp5jmne6lay2g"]
 
 [ext_resource type="Script" uid="uid://j4qxh2r1k0g3" path="res://Game/Items/item.gd" id="1_513kx"]
 [ext_resource type="Texture2D" uid="uid://q8caclgol07n" path="res://Assets/Party Popper.png" id="2_cyddd"]
+[ext_resource type="Texture2D" uid="uid://c4g5i6e06biie" path="res://Assets/Particle 2.png" id="2_s2s0x"]
+[ext_resource type="Texture2D" uid="uid://cl7hrhbku4dnx" path="res://Assets/Particle (2).png" id="4_h0m8x"]
+
+[sub_resource type="Gradient" id="Gradient_h0m8x"]
+offsets = PackedFloat32Array(0, 0.638961, 0.742857, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.490196, 1, 1, 1, 0.827451, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_fl1m2"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_modij"]
 points = PackedVector2Array(-16.0001, -16.9999, 14.9999, -20.0001, 1.00007, 19)
@@ -24,10 +35,36 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_7yu3d"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.0109439, 0), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_iyr0o"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0998632, 0.793618), 1.96125, 1.96125, 0, 0, Vector2(0.512996, 1), 0.0, 0.0, 0, 0, Vector2(0.923393, 0.803937), -1.63231, -1.63231, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
 [node name="RigidBody2D" type="RigidBody2D"]
 linear_damp = 10.0
 angular_damp = 25.0
 script = ExtResource("1_513kx")
+
+[node name="ItemHighlightParticle" type="CPUParticles2D" parent="."]
+amount = 4
+texture = ExtResource("2_s2s0x")
+local_coords = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 19.54
+radial_accel_min = -10.0
+radial_accel_max = 10.0
+damping_min = 13.426
+damping_max = 13.426
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("Gradient_h0m8x")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("Curve_fl1m2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708
@@ -65,3 +102,24 @@ color_ramp = SubResource("Gradient_xe8em")
 hue_variation_min = -1.0
 hue_variation_max = 1.0
 hue_variation_curve = SubResource("Curve_modij")
+
+[node name="DespawnParticles" type="CPUParticles2D" parent="."]
+emitting = false
+texture = ExtResource("4_h0m8x")
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(32, 8)
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+damping_min = 400.0
+damping_max = 400.0
+damping_curve = SubResource("Curve_7yu3d")
+angle_min = -835.0
+angle_max = 720.0
+scale_amount_min = 0.2
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_iyr0o")
