@@ -23,6 +23,21 @@ var no_tie: bool = false
 func return_winner():
 	pass
 
+func define_winner(winner_id: int = -1) -> void:
+	if winner_id == -1:
+		var winner = return_winner()
+		PlayerManager.player_scores[winner] = PlayerManager.player_scores.get(winner, 0) + 1
+		PlayerManager.previous_winner_id = winner
+	else:
+		PlayerManager.player_scores[winner_id] = PlayerManager.player_scores.get(winner_id, 0) + 1
+		PlayerManager.previous_winner_id = winner_id
+	if finish_scene:
+		get_tree().change_scene_to_file(finish_scene)
+		return
+	else:
+		push_error("finish scene fialed to load")
+	
+
 func _process(delta: float) -> void:
 	var winner = return_winner()
 	if round_time <= 0 and winner != -1:

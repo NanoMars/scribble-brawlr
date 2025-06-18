@@ -9,6 +9,8 @@ var boxes_spawned: int = 0
 var king_ui: PackedScene = preload("res://Game/Gamemodes/King/king_UI.tscn")
 var crown: Node = null
 
+@export var time_goal: int = 30
+
 func _on_player_died(controller_id: int, player_id: int, killer_player_id: int) -> void:
 	
 	respawn_player(controller_id, player_id)
@@ -33,6 +35,8 @@ func crown_scored(player_id: int):
 	gamemode_ui_instance.update_score(player_id, player_scores[player_id])
 	
 	no_tie = not return_tie()
+	if player_scores[player_id] >= time_goal:
+		define_winner(player_id)
 	
 	
 
