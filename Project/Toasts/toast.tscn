@@ -14,7 +14,7 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 
 [node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("toast_label")]
-custom_minimum_size = Vector2(20, 10)
+custom_minimum_size = Vector2(20, 70)
 theme_override_styles/panel = SubResource("StyleBoxFlat_flbin")
 script = ExtResource("1_2wccl")
 toast_label = NodePath("Label")
@@ -22,3 +22,4 @@ toast_label = NodePath("Label")
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
+text = "asdasfa"
