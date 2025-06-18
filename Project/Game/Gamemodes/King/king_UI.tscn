@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpoq66qo4uo0k"]
 
 [ext_resource type="Script" uid="uid://c6w6i1eq05ecb" path="res://Game/Gamemodes/deathmatch_ui.gd" id="1_06x3k"]
-[ext_resource type="PackedScene" uid="uid://symkawjy038p" path="res://Game/Gamemodes/deathmatch_ui_score.tscn" id="2_spna1"]
+[ext_resource type="PackedScene" uid="uid://cvhjee8oy40xh" path="res://Game/Gamemodes/king_ui_score.tscn" id="2_06x3k"]
 [ext_resource type="PackedScene" uid="uid://ct1muubjadip" path="res://Game/Gamemodes/game_clock.tscn" id="3_a0miv"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("score_ui_container", "clock_label")]
@@ -13,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06x3k")
-score_ui = ExtResource("2_spna1")
+score_ui = ExtResource("2_06x3k")
 score_ui_container = NodePath("MarginContainer/VBoxContainer/CenterContainer/HBoxContainer")
 clock_label = NodePath("MarginContainer/VBoxContainer/CenterContainer2/PanelContainer/HBoxContainer/Label")
 
@@ -48,5 +48,6 @@ size_flags_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 80
 
 [editable path="MarginContainer/VBoxContainer/CenterContainer2/PanelContainer"]

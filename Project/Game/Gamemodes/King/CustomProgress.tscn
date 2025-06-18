@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://bktmam4b4kfnn"]
+
+[ext_resource type="Script" uid="uid://bfoku1028t1ys" path="res://Game/Gamemodes/King/custom_progress.gd" id="1_wql6k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wql6k"]
+bg_color = Color(0, 0, 0, 0.196078)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_irojx"]
+corner_radius_top_left = 200
+corner_radius_top_right = 200
+corner_radius_bottom_right = 200
+corner_radius_bottom_left = 200
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7voa8"]
+bg_color = Color(0.968627, 1, 1, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 208.0
+offset_bottom = 35.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wql6k")
+script = ExtResource("1_wql6k")
+max_value = 100.0
+value = 5.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+clip_children = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_irojx")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7voa8")
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
