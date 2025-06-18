@@ -11,41 +11,46 @@ var toast_string: String:
 
 func _ready() -> void:
 	modulate = Color(1, 1, 1, 1)
+	global_position.y = DisplayServer.window_get_size().y + size.y
+	global_position.x = DisplayServer.window_get_size().x / 2.0 - size.x / 2.0
 
 var animation_duration: float = 0.3
 var duration: float = 5
 
+
+var spring_velocity: float = 0
+@export var gap: float = 10
+@export var margin: float = -20
+
+@export var spring_strength: float = 1
+@export var spring_damping: float = 0.9
+
+var shown: bool = false
+
+func _process(delta: float) -> void:
+	if not shown:
+		return
+
+	var index = ToastManager.toast_array.find(self)
+
+	var target_position = DisplayServer.window_get_size().y - margin - (index * (size.y)) - (index * gap) - size.y
+	
+
+	spring_velocity += (target_position - global_position.y) * spring_strength * delta
+	spring_velocity -= spring_velocity * spring_damping * delta
+	global_position.y += spring_velocity * delta
+
 func show_toast() -> void:
-	modulate = Color(1, 1, 1, 1)
-	await get_tree().process_frame
-	
-	var tree = get_tree()
-	var container = get_parent()
-	
-	var clone = temp_thing.instantiate()
-	
-	container.add_child(clone)
-	container.remove_child(self)
-	tree.root.add_child(self)
-	var assigned_location = clone.global_position
-	
-
-
-	global_position = Vector2(assigned_location.x, 1200)
-	#tween from current position to assigned_location
-
-	var tween = create_tween()
-	tween.tween_property(self, "global_position", assigned_location, animation_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	await tween.finished
-	clone.queue_free()
-	print("after_tween")
-	container.add_child(self)
-
-
+	if shown:
+		return
+	shown = true
 	await get_tree().create_timer(duration).timeout
 	disappear()
+	
 
 func disappear() -> void:
+
+	shown = false
 	var tree = get_tree()
 	var initial_position = global_position
 	var off_screen_position = Vector2(initial_position.x, 1200)  # Assuming 1920/1080 resolution
@@ -56,4 +61,5 @@ func disappear() -> void:
 	# tween from current position to off the screen
 	tween.tween_property(self, "global_position", off_screen_position, animation_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween.finished
+	ToastManager.toast_array.erase(self)
 	queue_free()

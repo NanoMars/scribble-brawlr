@@ -15,9 +15,12 @@ corner_radius_bottom_left = 100
 
 [node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("toast_label")]
 custom_minimum_size = Vector2(20, 70)
+offset_right = 169.0
+offset_bottom = 70.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_flbin")
 script = ExtResource("1_2wccl")
 toast_label = NodePath("Label")
+margin = 20.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

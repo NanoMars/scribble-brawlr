@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca8pjb2vr83ab"]
+[gd_scene load_steps=8 format=3 uid="uid://ca8pjb2vr83ab"]
 
+[ext_resource type="Script" uid="uid://dnddewh4elb1x" path="res://MainMenu/main_menu.gd" id="1_jdgnk"]
 [ext_resource type="Texture2D" uid="uid://cydc4l614e3hy" path="res://Assets/PrinterPaper.jpg" id="1_kbpwf"]
 [ext_resource type="Script" uid="uid://rpgvmmvlfauk" path="res://scripts/logo_animation.gd" id="2_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://dge8y1xl5l0l4" path="res://Assets/logo/Asset 1Skribble Brawlr.png" id="2_kbpwf"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jdgnk")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
