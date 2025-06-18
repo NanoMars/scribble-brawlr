@@ -8,11 +8,11 @@ extends PanelContainer
 var toast_string: String:
 	set(value):
 		toast_label.text = value
+		
 
 func _ready() -> void:
 	modulate = Color(1, 1, 1, 1)
 	global_position.y = get_viewport().get_visible_rect().size.y + size.y
-	global_position.x = get_viewport().get_visible_rect().size.x / 2.0 - size.x / 2.0
 
 var animation_duration: float = 0.3
 var duration: float = 5
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		return
 
 	var index = ToastManager.toast_array.find(self)
-
+	global_position.x = get_viewport().get_visible_rect().size.x / 2.0 - size.x / 2.0
 	var target_position = get_viewport().get_visible_rect().size.y - margin - (index * (size.y)) - (index * gap) - size.y
 	
 
@@ -51,6 +51,7 @@ func show_toast() -> void:
 func disappear() -> void:
 
 	shown = false
+	ToastManager.toast_array.erase(self)
 	var tree = get_tree()
 	var initial_position = global_position
 	var off_screen_position = Vector2(initial_position.x, 1200)  # Assuming 1920/1080 resolution
@@ -61,5 +62,5 @@ func disappear() -> void:
 	# tween from current position to off the screen
 	tween.tween_property(self, "global_position", off_screen_position, animation_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween.finished
-	ToastManager.toast_array.erase(self)
+	
 	queue_free()
