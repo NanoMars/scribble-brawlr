@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://pgrj4cdsiocp"]
+
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_620gt"]
+[ext_resource type="Script" uid="uid://c1v4sxy77irdh" path="res://Shield.gd" id="2_vf1mf"]
+[ext_resource type="Texture2D" uid="uid://dq88e7ufpsvtj" path="res://Assets/tilesheet@2 (2).png" id="3_8flfb"]
+[ext_resource type="PackedScene" uid="uid://dsshxgr4eyh4u" path="res://Game/Items/shield_collision_guy.tscn" id="4_vf1mf"]
+
+[node name="RigidBody2D" instance=ExtResource("1_620gt")]
+script = ExtResource("2_vf1mf")
+durability = 3
+shield_collision_guy = ExtResource("4_vf1mf")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_8flfb")
+region_rect = Rect2(779, 1324, 106, 41)
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = false
+position = Vector2(4, 0)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." index="5"]

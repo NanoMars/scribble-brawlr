@@ -61,13 +61,16 @@ func _process(delta):
 	if not is_held and depleted:
 		despawn_timer += delta
 		if despawn_timer >= despawn_duration:
-			remove_child(despawn_particles)
-			get_tree().get_nodes_in_group("game_root")[0].add_child(despawn_particles)
-			despawn_particles.global_position = global_position
-			despawn_particles.emitting = true
-			queue_free()
+			despawn()
 	else:
 		despawn_timer = 0.0
+
+func despawn():
+	remove_child(despawn_particles)
+	get_tree().get_nodes_in_group("game_root")[0].add_child(despawn_particles)
+	despawn_particles.global_position = global_position
+	despawn_particles.emitting = true
+	queue_free()
 
 func press(obstacle_distance: float):
 	pass
