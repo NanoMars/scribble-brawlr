@@ -11,8 +11,8 @@ var toast_string: String:
 
 func _ready() -> void:
 	modulate = Color(1, 1, 1, 1)
-	global_position.y = DisplayServer.window_get_size().y + size.y
-	global_position.x = DisplayServer.window_get_size().x / 2.0 - size.x / 2.0
+	global_position.y = get_viewport().get_visible_rect().size.y + size.y
+	global_position.x = get_viewport().get_visible_rect().size.x / 2.0 - size.x / 2.0
 
 var animation_duration: float = 0.3
 var duration: float = 5
@@ -33,11 +33,11 @@ func _process(delta: float) -> void:
 
 	var index = ToastManager.toast_array.find(self)
 
-	var target_position = DisplayServer.window_get_size().y - margin - (index * (size.y)) - (index * gap) - size.y
+	var target_position = get_viewport().get_visible_rect().size.y - margin - (index * (size.y)) - (index * gap) - size.y
 	
 
-	spring_velocity += (target_position - global_position.y) * spring_strength * delta
-	spring_velocity -= spring_velocity * spring_damping * delta
+	spring_velocity += (target_position - global_position.y) * spring_strength
+	spring_velocity -= spring_velocity * spring_damping
 	global_position.y += spring_velocity * delta
 
 func show_toast() -> void:

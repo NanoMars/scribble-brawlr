@@ -21,8 +21,13 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_flbin")
 script = ExtResource("1_2wccl")
 toast_label = NodePath("Label")
 margin = 20.0
+spring_strength = 75.0
+spring_damping = 0.7
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.196078)
+theme_override_constants/shadow_offset_x = -2
+theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 35
 text = "asdasfa"
