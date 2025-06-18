@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0nerldhvukwt"]
+
+[ext_resource type="Script" uid="uid://bytyih2wyn3pk" path="res://Toasts/toast.gd" id="1_2wccl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flbin"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.294118)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("toast_label")]
+custom_minimum_size = Vector2(20, 10)
+theme_override_styles/panel = SubResource("StyleBoxFlat_flbin")
+script = ExtResource("1_2wccl")
+toast_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
