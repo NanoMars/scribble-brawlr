@@ -31,10 +31,16 @@ func _process(_delta: float) -> void:
 		update_labels()
 		
 
-	if Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A) and player_id == 1:
-		if not start_button_held and PlayerManager.joined_players.size() >= 2:
+	if Input.is_joy_button_pressed(controller_id, JOY_BUTTON_A):
+		if not start_button_held and PlayerManager.joined_players.size() >= 2 and player_id == 1:
 			GameManager.start_game_round()
+		elif not start_button_held and not PlayerManager.joined_players.size() >= 2 and player_id == 1:
+			ToastManager.display_toast("Not enough players to start!")
+		elif not start_button_held and player_id != 1:
+			ToastManager.display_toast("Only Player 1 can start the game!")
+		if not start_button_held:
 			start_button_held = true
+
 	else:
 		start_button_held = false
 
