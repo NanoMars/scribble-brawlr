@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://db2fjjmacnuni"]
+
+[ext_resource type="StyleBox" uid="uid://ckg8no6qptkm7" path="res://Pause/greyTransparentHover.tres" id="1_1foqt"]
+[ext_resource type="StyleBox" uid="uid://2tv73jfgcxgw" path="res://Pause/GreyTransparent.tres" id="2_h1ejf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b2hm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7eai"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_right = 30.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 0.196078)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.784314)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.648762, 0.648761, 0.648761, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 15
+Button/font_sizes/font_size = 45
+Button/styles/focus = SubResource("StyleBoxEmpty_b2hm5")
+Button/styles/hover = ExtResource("1_1foqt")
+Button/styles/normal = ExtResource("2_h1ejf")
+Button/styles/pressed = SubResource("StyleBoxFlat_p7eai")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 40

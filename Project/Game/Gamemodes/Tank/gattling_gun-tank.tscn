@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbrb8umcx4g1v"]
+[gd_scene load_steps=3 format=3 uid="uid://cbrb8umcx4g1v"]
 
 [ext_resource type="PackedScene" uid="uid://c4x4eha5aau8e" path="res://Game/Items/gattling_gun.tscn" id="1_boryd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boryd"]
+size = Vector2(114, 68)
 
 [node name="RigidBody2D" instance=ExtResource("1_boryd")]
 temperature_increase_rate = 40.0
@@ -15,3 +18,11 @@ color = Color(0, 0.571501, 0.835742, 1)
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(1.03776, 1.03776)
+
+[node name="CollisionShape2D" parent="." index="2"]
+visible = false
+position = Vector2(12.5, 6)
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="5"]
+shape = SubResource("RectangleShape2D_boryd")

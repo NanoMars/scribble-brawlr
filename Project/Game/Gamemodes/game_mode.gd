@@ -6,6 +6,8 @@ class_name GameMode
 @export var finish_scene: NodePath = NodePath("res://Intermission/intermission_menu.tscn")
 @onready var object_spawner_scene: PackedScene = preload("res://Game/ObjectSpawner.tscn")
 
+@onready var pause_menu_scene: PackedScene = preload("res://Pause/pause_menu.tscn")
+var pause_menu_instance: Node = null
 var spawn_points: Dictionary = {}
 
 @export var game_start_delay: float = 1.5
@@ -19,6 +21,7 @@ var round_time: float
 var game_started: bool = false
 var box_timer = 0
 var no_tie: bool = false
+
 
 var custom_object_scene: PackedScene = null
 
@@ -79,6 +82,10 @@ func load_ui() -> void:
 
 func _ready() -> void:
 	round_time = round_duration
+
+	pause_menu_instance = pause_menu_scene.instantiate()
+	add_child(pause_menu_instance)
+	pause_menu_instance.hide()
 	
 	for node in get_tree().get_nodes_in_group("player_spawns"):
 		spawn_points[node.player_color] = node

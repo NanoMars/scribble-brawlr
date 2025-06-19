@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b35q5vj436vhq" path="res://Game/Projectiles/Projectile.tscn" id="3_khwbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1bya"]
-size = Vector2(66.9996, 118)
+size = Vector2(40.9998, 66.0002)
 
 [node name="RigidBody2D" instance=ExtResource("1_fs545")]
 script = ExtResource("2_khwbh")

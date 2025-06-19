@@ -3,7 +3,7 @@ extends Item
 
 
 @export var durability: int = 3
-var initial_durability: int = durability
+@onready var initial_durability: int = durability
 @export var shield_collision_guy: PackedScene
 @onready var remote_transform: RemoteTransform2D = $RemoteTransform2D
 
