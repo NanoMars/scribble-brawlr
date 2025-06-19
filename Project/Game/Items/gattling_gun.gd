@@ -7,10 +7,8 @@ extends Item
 
 @export var projectile_speed: float = 1000.0
 @export var projectile_scene: PackedScene
- 
-@export var base_fire_rate: float = 0.2
-@export var fire_rate_increase_rate: float = 
-@onready var fire_rate: float = base_fire_rate
+
+@export var fire_rate: float = 0.1
 @export var fire_timer: float = 0.0
 @export var fire_angle_variance: float = 0.1
 
@@ -39,9 +37,6 @@ func _process(delta: float) -> void:
 		if holder and temperature > 0:
 			holder.ammo_progress = (temperature / max_temperature) * 100
 
-	if !button_held:
-		fire_rate = base_fire_rate
-
 	var overheat_progress = temperature / max_temperature
 	
 	sprite.modulate = Color(1.0, 1.0 - overheat_progress, 1.0 - overheat_progress, 1.0)
@@ -64,7 +59,6 @@ func press_held(delta: float, obstacle_distance: float):
 				projectile.rotation = global_rotation + randf_range(-fire_angle_variance, fire_angle_variance)
 				projectile.set_meta("kill_owner", holder_player_id)
 				projectile.apply_impulse(Vector2(cos(projectile.rotation), sin(projectile.rotation)) * projectile_speed)
-				fire_rate /= fire_rate_increase_rate
 
 				
 
