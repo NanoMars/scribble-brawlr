@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b35q5vj436vhq" path="res://Game/Projectiles/Projectile.tscn" id="3_khwbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1bya"]
-size = Vector2(36.9998, 66.0002)
+size = Vector2(66.9996, 118)
 
 [node name="RigidBody2D" instance=ExtResource("1_fs545")]
 script = ExtResource("2_khwbh")
@@ -16,9 +16,15 @@ temperature_increase_rate = 90.0
 temperature_decrease_rate = 60.0
 projectile_speed = 1000.0
 projectile_scene = ExtResource("3_khwbh")
-fire_rate = 0.1
+fire_rate = 0.15
 fire_timer = 0.0
 fire_angle_variance = 0.1
+holding_look_dampening = 5.0
+holding_look_speed = 30.0
+
+[node name="ItemHighlightParticle" parent="." index="0"]
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.58882, 0.58882)

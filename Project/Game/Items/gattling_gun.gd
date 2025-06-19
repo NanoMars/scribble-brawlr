@@ -13,6 +13,12 @@ extends Item
 @export var fire_angle_variance: float = 0.1
 
 
+@export var holding_look_dampening: float = 5
+@export var holding_look_speed: float = 30
+
+var initial_player_look_damping# = holder.look_dampening
+var initial_player_look_speed# = holder.look_speed
+
 var overheated: bool = false
 
 var button_held: bool = false
@@ -26,7 +32,6 @@ func press(_obstacle_distance: float):
 func release(_obstacle_distance: float):
 	button_held = false
 	
-			
 
 func _process(delta: float) -> void:
 	super._process(delta)
@@ -60,15 +65,15 @@ func press_held(delta: float, obstacle_distance: float):
 				projectile.set_meta("kill_owner", holder_player_id)
 				projectile.apply_impulse(Vector2(cos(projectile.rotation), sin(projectile.rotation)) * projectile_speed)
 
-				
-
-
-		
-
-			
-	
-
 func update_state():
 	super.update_state()
 	# if is_held:
 	# 	holder.ammo_progress = (float(ammo) / float(initial_ammo)) * 100
+	if is_held and holder:
+		initial_player_look_damping = holder.look_dampening
+		initial_player_look_speed = holder.look_speed
+		holder.look_dampening = holding_look_dampening
+		holder.look_speed = holding_look_speed
+	elif not is_held and most_recent_holder:
+		most_recent_holder.look_dampening = initial_player_look_damping
+		most_recent_holder.look_speed = initial_player_look_speed

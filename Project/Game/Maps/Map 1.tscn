@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=4 uid="uid://bgbw30t3t305q"]
 
-[ext_resource type="Script" uid="uid://em0exjh2iing" path="res://Game/Gamemodes/King/king.gd" id="1_7raqb"]
+[ext_resource type="Script" uid="uid://x2eg2e0rlfm5" path="res://Game/Gamemodes/Tank/tank.gd" id="1_frlc7"]
 [ext_resource type="TileSet" uid="uid://cxp7vgw20wyxk" path="res://Assets/game.tres" id="3_flgk0"]
 [ext_resource type="PackedScene" uid="uid://cnxht1kseyl6x" path="res://Game/Player/spawn_point.tscn" id="5_flgk0"]
 
 [node name="Node2D" type="Node2D" groups=["game_root"]]
-script = ExtResource("1_7raqb")
+script = ExtResource("1_frlc7")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -101

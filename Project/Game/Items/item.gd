@@ -8,6 +8,8 @@ var recent_holder: Node = null
 var remove_holder_distance: float = 100.0
 var holder: Node = null
 
+var most_recent_holder: Node = null
+
 var depleted: bool = false
 
 @onready var highlight: CPUParticles2D = $ItemHighlightParticle
@@ -45,6 +47,7 @@ func update_state():
 		collision_mask = 0
 		sleeping = true
 		holder = get_parent().get_parent()
+		most_recent_holder = holder
 		highlight.emitting = false
 	else:
 		PhysicsServer2D.body_set_mode(get_rid(), PhysicsServer2D.BODY_MODE_RIGID)

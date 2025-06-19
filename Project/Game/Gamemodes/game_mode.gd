@@ -20,6 +20,8 @@ var game_started: bool = false
 var box_timer = 0
 var no_tie: bool = false
 
+var custom_object_scene: PackedScene = null
+
 func return_winner():
 	pass
 
@@ -68,7 +70,7 @@ func _process(delta: float) -> void:
 			var object_spawner_instance = object_spawner_scene.instantiate()
 			object_spawner_instance.global_position = Vector2(randf() * 1920, randf() * 1080)
 			get_tree().get_nodes_in_group("game_root")[0].add_child(object_spawner_instance)
-			object_spawner_instance.spawn_object(1)
+			object_spawner_instance.spawn_object(1, custom_object_scene)
 			box_timer = 0
 
 func load_ui() -> void:
@@ -91,7 +93,7 @@ func _ready() -> void:
 		var object_spawner_instance = object_spawner_scene.instantiate()
 		object_spawner_instance.global_position = Vector2(randf() * 1920, randf() * 1080)
 		get_tree().get_nodes_in_group("game_root")[0].add_child(object_spawner_instance)
-		object_spawner_instance.spawn_object(1)
+		object_spawner_instance.spawn_object(1, custom_object_scene)
 
 	await get_tree().create_timer(game_start_delay).timeout
 	start_game()

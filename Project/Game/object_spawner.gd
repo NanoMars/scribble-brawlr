@@ -8,7 +8,8 @@ extends Marker2D
 func _ready() -> void:
 	progress_bar.visible = false
 
-func spawn_object(spawn_time: float, object_scene: PackedScene = default_object_scene):	
+func spawn_object(spawn_time: float, object_scene: PackedScene = default_object_scene):
+	object_scene = object_scene if object_scene and object_scene != null else default_object_scene
 	progress_bar.scale = Vector2.ZERO
 
 	var bounce_in: Tween = create_tween()

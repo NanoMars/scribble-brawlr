@@ -15,6 +15,9 @@ func _process(delta: float) -> void:
 	
 	if existence_timer > allowed_existence:
 		break_projectile()
+	await get_tree().process_frame
+	if linear_velocity.length() <= 0.1 and existence_timer > 0.1:
+		break_projectile()
 
 func _on_body_entered(body: Node) -> void:
 	var other_velocity = body.get_linear_velocity() if body.has_method("get_linear_velocity") else Vector2.ZERO
@@ -24,7 +27,7 @@ func _on_body_entered(body: Node) -> void:
 		break_projectile(linear_velocity - other_velocity)
 
 func break_projectile(direction: Vector2 = Vector2.ZERO):
-	var particles: CPUParticles2D = $CPUParticles2D
+	var particles: CPUParticles2D = get_node_or_null("CPUParticles2D")
 	if particles:
 		var angle = direction.angle()
 		direction = Vector2(cos(angle), sin(angle)) * 300 if direction.length() > 300 else direction

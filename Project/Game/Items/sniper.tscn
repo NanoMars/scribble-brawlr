@@ -39,12 +39,12 @@ points = PackedVector2Array(26, 0, 2300, 0)
 width = 5.0
 default_color = Color(1, 0, 0, 0.180392)
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="Sprite2D" parent="." index="3"]
 scale = Vector2(0.454773, 0.454773)
 texture = ExtResource("3_jkhhn")
 region_rect = Rect2(43, 3, 45, 122)
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("CapsuleShape2D_egvnq")
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="5"]

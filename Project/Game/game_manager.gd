@@ -8,7 +8,8 @@ extends Node
 
 @export var game_modes: Dictionary[Script, Texture] = {
 	preload("res://Game/Gamemodes/deathmatch.gd"): preload("res://Assets/SplashScreens/deathmatch.png"),
-	preload("res://Game/Gamemodes/King/king.gd"): preload("res://Assets/SplashScreens/King (1).png")
+	preload("res://Game/Gamemodes/King/king.gd"): preload("res://Assets/SplashScreens/King (1).png"),
+	preload("res://Game/Gamemodes/Tank/tank.gd"): preload("res://Assets/SplashScreens/tank.png"),
 }
 
 func start_game_round(map: PackedScene = null, game_mode: Script = null) -> void:
