@@ -47,8 +47,10 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7voa8")
 
 [node name="Control" type="Control" parent="MarginContainer/PanelContainer/HBoxContainer"]

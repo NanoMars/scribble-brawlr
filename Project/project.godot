@@ -14,6 +14,7 @@ config/name="scribble brawlr"
 run/main_scene="uid://ca8pjb2vr83ab"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://c1xqxhmpx4qdy"
+config/macos_native_icon="res://Assets/gameicon.icon"
 
 [autoload]
 
@@ -53,3 +54,4 @@ harmless=""
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

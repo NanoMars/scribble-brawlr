@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b78ynr3t8xgwi"]
+[gd_scene load_steps=11 format=3 uid="uid://b78ynr3t8xgwi"]
 
 [ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_i6kyw"]
 [ext_resource type="Texture2D" uid="uid://1lfre2ux5ba7" path="res://Assets/Crate.png" id="2_6ekhb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://2f7p67ugfsyc" path="res://Assets/Plank Particle.png" id="4_qiomx"]
 [ext_resource type="PackedScene" uid="uid://boad6ln55oh" path="res://Game/Items/sniper.tscn" id="5_rofx0"]
 [ext_resource type="PackedScene" uid="uid://pgrj4cdsiocp" path="res://Game/Items/Shield.tscn" id="6_uiegq"]
+[ext_resource type="PackedScene" uid="uid://c4x4eha5aau8e" path="res://Game/Items/gattling_gun.tscn" id="7_sk6kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiomx"]
 size = Vector2(42.0002, 41.9998)
@@ -17,7 +18,7 @@ script = ExtResource("2_qiomx")
 break_threshold = 30.0
 break_particles_speed_variation = 1.5
 break_particles_multiplier = 1.5
-crate_contents = Array[PackedScene]([ExtResource("3_ocrun"), ExtResource("4_lqvrg"), ExtResource("5_rofx0"), ExtResource("6_uiegq")])
+crate_contents = Array[PackedScene]([ExtResource("3_ocrun"), ExtResource("4_lqvrg"), ExtResource("5_rofx0"), ExtResource("6_uiegq"), ExtResource("7_sk6kr")])
 show_ammo_progress = false
 
 [node name="Sprite2D" parent="." index="1"]

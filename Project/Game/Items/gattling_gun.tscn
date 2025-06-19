@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4x4eha5aau8e"]
+
+[ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_fs545"]
+[ext_resource type="Script" uid="uid://ckflsyx5xmxpd" path="res://Game/Items/gattling_gun.gd" id="2_khwbh"]
+[ext_resource type="Texture2D" uid="uid://bm81ooq4neblb" path="res://Assets/gattling gun.png" id="3_h4e44"]
+[ext_resource type="PackedScene" uid="uid://b35q5vj436vhq" path="res://Game/Projectiles/Projectile.tscn" id="3_khwbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1bya"]
+size = Vector2(22.9999, 38)
+
+[node name="RigidBody2D" instance=ExtResource("1_fs545")]
+script = ExtResource("2_khwbh")
+temperature = 0.0
+max_temperature = 100.0
+temperature_increase_rate = 10.0
+temperature_decrease_rate = 25.0
+projectile_speed = 1000.0
+projectile_scene = ExtResource("3_khwbh")
+fire_rate = 0.1
+fire_timer = 0.0
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_h4e44")
+region_rect = Rect2(27, 7, 65, 114)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-1.63317e-05, 0.499997)
+shape = SubResource("RectangleShape2D_b1bya")
