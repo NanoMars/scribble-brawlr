@@ -100,13 +100,21 @@ func show_pause_menu():
 	SoundManager.play_sound(pause_sound_2, pause_sound_2_vol, 1.0)
 
 	await get_tree().process_frame
+	if buttons.size() > 0:
+		buttons[0].grab_focus()
 	for button in buttons:
 		button.visible = true
 		button.disabled = false
 		button.process_mode = Node.PROCESS_MODE_ALWAYS
-	if buttons.size() > 0:
-		buttons[0].grab_focus()
+		button.focus_entered.connect(_on_button_focus_entered)
+		button.pressed.connect(_on_button_pressed)
 	
+	
+func _on_button_focus_entered():
+	SoundManager.play_navigate_sound()
+func _on_button_pressed():
+	SoundManager.play_select_sound()
+
 func hide_pause_menu():
 	is_paused = false
 
@@ -115,6 +123,9 @@ func hide_pause_menu():
 	animation_start_time = Time.get_ticks_usec()
 
 	SoundManager.play_sound(unpause_sound, unpause_sound_vol, 1.0)
+
+	for button in buttons:
+		button.release_focus()
 
 	await get_tree().create_timer(animation_duration).timeout
 	visible = false

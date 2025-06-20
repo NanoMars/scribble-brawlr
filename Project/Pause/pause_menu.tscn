@@ -91,7 +91,6 @@ theme_override_constants/separation = 30
 [node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("pause_manager")]
 layout_mode = 2
 size_flags_horizontal = 4
-focus_neighbor_left = NodePath("../Button2")
 focus_neighbor_right = NodePath("../Button2")
 theme = ExtResource("2_gcgll")
 text = "Resume"
@@ -102,7 +101,6 @@ pause_manager = NodePath("../../../../..")
 layout_mode = 2
 size_flags_horizontal = 4
 focus_neighbor_left = NodePath("../Button")
-focus_neighbor_right = NodePath("../Button")
 theme = ExtResource("2_gcgll")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Exit to Main Menu"
