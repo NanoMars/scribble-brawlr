@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://di4furit0fybd"]
+[gd_scene load_steps=28 format=3 uid="uid://di4furit0fybd"]
 
 [ext_resource type="Script" uid="uid://bfvkj3fd6anh8" path="res://Game/Player/player.gd" id="1_3qydi"]
 [ext_resource type="Texture2D" uid="uid://dcptd7eu0ujv1" path="res://Assets/Characters/red_character.png" id="2_75cta"]
@@ -14,11 +14,17 @@
 [ext_resource type="Texture2D" uid="uid://du3kqivc286dg" path="res://Assets/teardrop_yellow.png" id="12_tnxc6"]
 [ext_resource type="Texture2D" uid="uid://c7suillw3dfa0" path="res://Assets/teardrop_green.png" id="13_3j14s"]
 [ext_resource type="AudioStream" uid="uid://bkuojroqbaoxu" path="res://Audio/237927__foolboymedia__messy-splat-3.wav" id="14_6upfr"]
+[ext_resource type="AudioStream" uid="uid://bjm0h5n32vnsn" path="res://Audio/pickup.ogg" id="14_u78gx"]
 [ext_resource type="AudioStream" uid="uid://dov7dd7fncbjq" path="res://Audio/footsteps/footstep_concrete_000.ogg" id="15_wg23h"]
 [ext_resource type="AudioStream" uid="uid://ddb002saxtusq" path="res://Audio/footsteps/footstep_concrete_001.ogg" id="16_u78gx"]
 [ext_resource type="AudioStream" uid="uid://b4ebqrg2dgjea" path="res://Audio/footsteps/footstep_concrete_002.ogg" id="17_cdlqx"]
 [ext_resource type="AudioStream" uid="uid://bjlrp4rn1wl25" path="res://Audio/footsteps/footstep_concrete_003.ogg" id="18_rmqab"]
 [ext_resource type="AudioStream" uid="uid://dkjj20v0gyr31" path="res://Audio/footsteps/footstep_concrete_004.ogg" id="19_vr2vl"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cdlqx"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("14_u78gx")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3lat"]
 radius = 13.0
@@ -48,6 +54,7 @@ max_drop_time = 0.25
 player_textures = Array[Texture]([ExtResource("2_75cta"), ExtResource("3_ckjsq"), ExtResource("4_66v2b"), ExtResource("5_32fjh")])
 hand_textures = Array[Texture]([ExtResource("6_tnxc6"), ExtResource("7_3j14s"), ExtResource("8_1dcqm"), ExtResource("9_sqpsa")])
 blood_textures = Array[Texture]([ExtResource("3_i4nf8"), ExtResource("11_32fjh"), ExtResource("12_tnxc6"), ExtResource("13_3j14s")])
+pickup_sfx = SubResource("AudioStreamRandomizer_cdlqx")
 death_sound = ExtResource("14_6upfr")
 footstep_sounds = Array[AudioStream]([ExtResource("15_wg23h"), ExtResource("16_u78gx"), ExtResource("17_cdlqx"), ExtResource("18_rmqab"), ExtResource("19_vr2vl")])
 footstep_sound_vol = 0.06

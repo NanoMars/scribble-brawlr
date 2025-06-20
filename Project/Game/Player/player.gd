@@ -57,6 +57,9 @@ var ammo_progress_internal: float = 100
 @export var hand_textures: Array[Texture] = [null, null, null, null]
 @export var blood_textures: Array[Texture] = [null, null, null, null]
 
+@export var pickup_sfx: AudioStream
+@export var pickup_sfx_vol: float = 0.5
+
 @export var death_sound: AudioStream
 @export var death_sound_vol: float = 0.3
 
@@ -191,6 +194,8 @@ func pick_up_item(item: Node):
 	call_deferred("_finalize_pick_up", item)
 
 func _finalize_pick_up(item: Node):
+	if pickup_sfx:
+		SoundManager.play_sound(pickup_sfx, pickup_sfx_vol)
 	item.get_parent().remove_child(item)
 	item_marker.add_child(item)
 	item.position = Vector2.ZERO
