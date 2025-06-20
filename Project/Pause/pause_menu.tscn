@@ -18,9 +18,11 @@ corner_radius_top_right = 1000
 corner_radius_bottom_right = 1000
 corner_radius_bottom_left = 1000
 
-[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("buttons", "player_icon")]
+[node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("buttons", "grey_background", "ui_stuff", "player_icon")]
 script = ExtResource("1_p7eai")
 buttons = [NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer/Button"), NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer/Button2")]
+grey_background = NodePath("ColorRect")
+ui_stuff = NodePath("Control")
 player_icon = NodePath("Control/CenterContainer/VBoxContainer/PanelContainer/HBoxContainer/TextureRect")
 
 [node name="ColorRect" type="ColorRect" parent="."]

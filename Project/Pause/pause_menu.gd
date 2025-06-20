@@ -7,16 +7,19 @@ var is_paused: bool = false
 
 var pause_menu_held_controller_ids: Dictionary[int, Array] = {}
 
-var time_scale_animation_duration: float = 0.15
+var animation_duration: float = 0.15
 
-var time_scale_start: float = 1.0
-var time_scale_end: float = 1.0
-var time_scale_start_time: float = 0.0
+var animation_start: float = 1.0
+var animation_end: float = 1.0
+var animation_start_time: float = 0.0
 
 @export var pause_button: int = JOY_BUTTON_START
 @export var back_button: int = JOY_BUTTON_B
 
 @export var buttons: Array[Button] = []
+
+@export var grey_background: ColorRect
+@export var ui_stuff: Control
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -81,9 +84,9 @@ func show_pause_menu():
 	is_paused = true
 	player_icon.texture = ColourPalette.get_player_texture(player_id - 1)
 
-	time_scale_start = Engine.time_scale
-	time_scale_end = 0
-	time_scale_start_time = Time.get_ticks_usec()
+	animation_start = Engine.time_scale
+	animation_end = 0
+	animation_start_time = Time.get_ticks_usec()
 	visible = true
 	await get_tree().process_frame
 	for button in buttons:
@@ -96,17 +99,20 @@ func show_pause_menu():
 func hide_pause_menu():
 	is_paused = false
 
-	time_scale_start = Engine.time_scale
-	time_scale_end = 1
-	time_scale_start_time = Time.get_ticks_usec()
-
+	animation_start = Engine.time_scale
+	animation_end = 1
+	animation_start_time = Time.get_ticks_usec()
+	await get_tree().create_timer(animation_duration).timeout
 	visible = false
+
 
 func _process(_delta: float):
 	
-	var elapsed = (Time.get_ticks_usec() - time_scale_start_time) / 1000000.0
+	var elapsed = (Time.get_ticks_usec() - animation_start_time) / 1000000.0
 
-	var t = clamp(elapsed / time_scale_animation_duration, 0.0, 1.0)
-	print(lerp(time_scale_start, time_scale_end, t))
+	var t = clamp(elapsed / animation_duration, 0.0, 1.0)
+	var lerp_t = lerp(animation_start, animation_end, t)
 	
-	Engine.time_scale = lerp(time_scale_start, time_scale_end, t)
+	Engine.time_scale = lerp_t
+	grey_background.modulate.a = 1 - lerp_t
+	ui_stuff.position.y = lerp_t * get_viewport().get_visible_rect().size.y
