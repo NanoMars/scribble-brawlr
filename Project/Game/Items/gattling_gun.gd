@@ -23,9 +23,14 @@ var overheated: bool = false
 @export var overheat_sound: AudioStream
 @export var overheat_vol: float = 0.3
 
+@export var shoot_sound: AudioStream
+@export var shoot_vol: float = 0.5
+
 var button_held: bool = false
 
 @onready var sprite: Sprite2D = $Sprite2D
+
+
 
 func press(_obstacle_distance: float):
 	#$CPUParticles2D.emitting = true
@@ -58,6 +63,8 @@ func press_held(delta: float, obstacle_distance: float):
 		else:
 			fire_timer += delta
 			if fire_timer >= fire_rate:
+				if shoot_sound:
+					SoundManager.play_sound(shoot_sound, shoot_vol)
 				temperature = min(max_temperature, temperature + (temperature_increase_rate * fire_rate))
 				holder.ammo_progress = (temperature / max_temperature) * 100
 				fire_timer = 0.0

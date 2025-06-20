@@ -9,6 +9,9 @@ var initial_player_look_speed# = holder.look_speed
 @onready var raycast: RayCast2D = $RayCast2D
 @export var lines: Array[Line2D] = []
 
+@export var shoot_sound: AudioStream
+@export var shoot_vol: float = 0.5
+
 
 func _ready() -> void:
 	super._ready()
@@ -34,7 +37,10 @@ func release(obstacle_distance: float):
 	for line in lines:
 		line.visible = false
 	if ammo > 0 and obstacle_distance == -1:
+		
 		$gunparticles.emitting = true
+		if shoot_sound:
+			SoundManager.play_sound(shoot_sound, shoot_vol)
 		ammo -= 1
 		holder.ammo_progress = (float(ammo) / float(initial_ammo)) * 100
 		if ammo <= 0:

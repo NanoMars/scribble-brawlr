@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://boad6ln55oh"]
+[gd_scene load_steps=10 format=3 uid="uid://boad6ln55oh"]
 
 [ext_resource type="PackedScene" uid="uid://bp5jmne6lay2g" path="res://Game/Items/item.tscn" id="1_kbhld"]
 [ext_resource type="Script" uid="uid://c0yf6ajjm2apl" path="res://Game/Items/sniper.gd" id="2_f0ca3"]
+[ext_resource type="AudioStream" uid="uid://dfq1f3nv0tlol" path="res://Audio/sniper.mp3" id="3_egvnq"]
 [ext_resource type="Texture2D" uid="uid://m0h62db7iylu" path="res://Assets/Sniper.png" id="3_jkhhn"]
 [ext_resource type="Texture2D" uid="uid://bnc8f4ttudnny" path="res://Assets/Smoke Particle.png" id="5_jkhhn"]
 
@@ -28,6 +29,8 @@ ammo = 2
 holding_look_dampening = 10.0
 holding_look_speed = 15.0
 lines = [NodePath("Line2D"), NodePath("Line2D2")]
+shoot_sound = ExtResource("3_egvnq")
+shoot_vol = 0.5
 
 [node name="Line2D" type="Line2D" parent="." index="0"]
 points = PackedVector2Array(26, 0, 2300, 0)

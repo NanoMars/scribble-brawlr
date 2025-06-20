@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://de4qyewoegela"
+path="res://.godot/imported/Tommy gun.ogg-0538214994b191f41e800b512eeec8d6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Game/Items/Tommy gun.ogg"
+dest_files=["res://.godot/imported/Tommy gun.ogg-0538214994b191f41e800b512eeec8d6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
