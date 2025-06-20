@@ -9,15 +9,16 @@
 height = 42.1896
 
 [node name="RigidBody2D" instance=ExtResource("1_5pjdu")]
+collision_layer = 3
 script = ExtResource("2_dxp6g")
 usage_duration = 6.0
 projectile_script = ExtResource("3_dxp6g")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 rotation = 0.0
 texture = ExtResource("2_t2xwn")
 region_rect = Rect2(11, 34, 103, 59)
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 rotation = 1.47131
 shape = SubResource("CapsuleShape2D_dxp6g")

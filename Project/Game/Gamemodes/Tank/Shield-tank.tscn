@@ -3,4 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://pgrj4cdsiocp" path="res://Game/Items/Shield.tscn" id="1_vnu7c"]
 
 [node name="RigidBody2D" groups=["crates"] instance=ExtResource("1_vnu7c")]
+collision_layer = 1
 durability = 15

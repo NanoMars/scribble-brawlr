@@ -45,6 +45,7 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0998632, 0.793618), 1.96125, 1
 point_count = 5
 
 [node name="RigidBody2D" type="RigidBody2D"]
+collision_layer = 3
 linear_damp = 10.0
 angular_damp = 25.0
 script = ExtResource("1_513kx")

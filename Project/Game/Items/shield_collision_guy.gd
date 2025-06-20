@@ -29,7 +29,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 	
 	velocity = holder.velocity
-	var other_velocity = body.get_linear_velocity() if body and body.has_method("get_linear_velocity") else Vector2.ZERO
+	var other_velocity = body.get_linear_velocity() if body and body.has_method("get_linear_velocity") and is_instance_valid(body) else Vector2.ZERO
 	var relative_velocity = (_shield.linear_velocity - other_velocity).length()
 	print("_shield Collision Guy: Body Entered", body.name, " with relative velocity: ", relative_velocity)
 	var other_meta = body.get_meta("kill_owner") if body.has_meta("kill_owner") else null
