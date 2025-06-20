@@ -5,6 +5,9 @@ extends Item
 @export var break_particles_multiplier: float = 1.5
 @export var crate_contents: Array[PackedScene] = []
 
+@export var break_sfx: Array[AudioStream] = []
+@export var sfx_vol: float = 0.5
+
 func _ready() -> void:
 	contact_monitor = true
 	max_contacts_reported = 5
@@ -31,7 +34,9 @@ func kill(direction: Vector2 = Vector2.ZERO, _other: Node = null):
 		particles.initial_velocity_min = direction.length() * break_particles_multiplier
 		particles.initial_velocity_max = direction.length() * break_particles_speed_variation * break_particles_multiplier
 		particles.emitting = true
-
+	if not break_sfx.is_empty():
+		var selected_sfx: AudioStream = break_sfx.pick_random()
+		SoundManager.play_sound(selected_sfx, sfx_vol)
 	var selected_item: PackedScene = crate_contents.pick_random()
 	var item_instance: Node = selected_item.instantiate()
 	item_instance.global_position = global_position
