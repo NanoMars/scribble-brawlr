@@ -60,6 +60,12 @@ var ammo_progress_internal: float = 100
 @export var death_sound: AudioStream
 @export var death_sound_vol: float = 0.3
 
+@export var footstep_sounds: Array[AudioStream] = []
+@export var footstep_sound_vol: float = 0.8
+@export var footstep_distance_threshold: float = 50.0
+var distance_since_last_footstep: float = 0.0
+@onready var last_position: Vector2 = global_position
+
 var dead: bool = false
 
 var holding_use := false
@@ -154,6 +160,14 @@ func _physics_process(delta):
 		holding_drop_time = 0.0
 
 func _process(delta: float) -> void:
+	distance_since_last_footstep += global_position.distance_to(last_position)
+	if distance_since_last_footstep >= footstep_distance_threshold and not dead:
+		distance_since_last_footstep = 0.0
+		if footstep_sounds.size() > 0:
+			var sound = footstep_sounds.pick_random()
+			SoundManager.play_sound(sound, footstep_sound_vol)
+	last_position = global_position
+
 	update_ammo_display(delta)
 	for item in dropped_items:
 		if item.global_position.distance_to(global_position) > pick_up_collision_shape.shape.get_radius():
@@ -182,6 +196,10 @@ func _finalize_pick_up(item: Node):
 	item.position = Vector2.ZERO
 	item.rotation = 0
 	current_item.set_meta("kill_owner", player_id)
+
+
+
+	
 
 	current_item.set_held_state(true)
 	
