@@ -26,3 +26,7 @@ SOFTWARE.
 ## [Messy Splat 3](https://freesound.org/people/FoolBoyMedia/sounds/237927/)
 
 Messy Splat 3 by FoolBoyMedia -- https://freesound.org/s/237927/ -- License: Attribution 4.0
+
+## (Hot Object Quench)[https://freesound.org/people/DJT4NN3R/sounds/484158/?]
+
+Hot Object Quench by DJT4NN3R -- https://freesound.org/s/484158/ -- License: Attribution NonCommercial 4.0
