@@ -107,6 +107,7 @@ func show_pause_menu():
 		button.disabled = false
 		button.process_mode = Node.PROCESS_MODE_ALWAYS
 		button.focus_entered.connect(_on_button_focus_entered)
+		button.mouse_entered.connect(_on_mouse_hovered.bind(button))
 		button.pressed.connect(_on_button_pressed)
 	
 	
@@ -114,6 +115,12 @@ func _on_button_focus_entered():
 	SoundManager.play_navigate_sound()
 func _on_button_pressed():
 	SoundManager.play_select_sound()
+func _on_mouse_hovered(button: Button):
+	if is_paused:
+		for b in buttons:
+			b.release_focus()
+		button.grab_focus()
+	
 
 func hide_pause_menu():
 	is_paused = false
