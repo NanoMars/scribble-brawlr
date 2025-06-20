@@ -1,6 +1,7 @@
 # toast.gd
 extends PanelContainer
 
+@onready var last_time: float = Time.get_ticks_usec()
 
 @onready var temp_thing: PackedScene = preload("res://Toasts/toast.tscn")
 
@@ -27,7 +28,10 @@ var spring_velocity: float = 0
 
 var shown: bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+
+	var constant_delta = (Time.get_ticks_usec() - last_time) / 1000000.0
+	last_time = Time.get_ticks_usec()
 	if not shown:
 		return
 
@@ -38,7 +42,7 @@ func _process(delta: float) -> void:
 
 	spring_velocity += (target_position - global_position.y) * spring_strength
 	spring_velocity -= spring_velocity * spring_damping
-	global_position.y += spring_velocity * delta
+	global_position.y += spring_velocity * constant_delta
 
 func show_toast() -> void:
 	if shown:
