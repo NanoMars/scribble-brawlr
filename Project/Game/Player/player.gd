@@ -57,6 +57,9 @@ var ammo_progress_internal: float = 100
 @export var hand_textures: Array[Texture] = [null, null, null, null]
 @export var blood_textures: Array[Texture] = [null, null, null, null]
 
+@export var death_sound: AudioStream
+@export var death_sound_vol: float = 0.3
+
 var dead: bool = false
 
 var holding_use := false
@@ -217,6 +220,9 @@ func kill(direction: Vector2 = Vector2.ZERO, other: Node = null):
 	particles.initial_velocity_max = direction.length() * death_particles_speed_variation
 	particles.emitting = true
 	drop_item(0.0)
+
+	SoundManager.play_sound(death_sound, death_sound_vol)
+
 	if other != null and other.get_meta("kill_owner") != null:
 		var killer_player_id = other.get_meta("kill_owner")
 		if killer_player_id != player_id and killer_player_id != -1:

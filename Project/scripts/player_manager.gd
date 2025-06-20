@@ -7,6 +7,11 @@ var previous_winner_id: int = -1
 const MAX_PLAYERS: int = 4
 signal player_id_changed(controller_id: int, player_id: int)
 
+var join_sound: AudioStream = preload("res://Audio/maximize_006.ogg")
+var join_sound_vol: float = 0.5
+var leave_sound: AudioStream = preload("res://Audio/minimize_006.ogg")
+var leave_sound_vol: float = 0.5
+
 func join_player(controller_id: int) -> int:
 	if controller_id in joined_players:
 		return -1
@@ -19,6 +24,7 @@ func join_player(controller_id: int) -> int:
 	joined_players[controller_id] = player_id
 	player_scores[player_id] = 0
 	emit_signal("player_id_changed", controller_id, player_id)
+	SoundManager.play_sound(join_sound, join_sound_vol)
 	return player_id
 
 func leave_player(controller_id: int) -> void:
@@ -26,6 +32,8 @@ func leave_player(controller_id: int) -> void:
 		var leaving_player_id: int = joined_players[controller_id]
 		joined_players.erase(controller_id)
 		player_scores.erase(leaving_player_id)
+		SoundManager.play_sound(leave_sound, leave_sound_vol)
+
 
 		for cid in joined_players.keys():
 			if joined_players[cid] > leaving_player_id:

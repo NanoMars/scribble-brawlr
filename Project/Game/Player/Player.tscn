@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://di4furit0fybd"]
+[gd_scene load_steps=21 format=3 uid="uid://di4furit0fybd"]
 
 [ext_resource type="Script" uid="uid://bfvkj3fd6anh8" path="res://Game/Player/player.gd" id="1_3qydi"]
 [ext_resource type="Texture2D" uid="uid://dcptd7eu0ujv1" path="res://Assets/Characters/red_character.png" id="2_75cta"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://diumr6pnk7gh5" path="res://Assets/teardrop_purple.png" id="11_32fjh"]
 [ext_resource type="Texture2D" uid="uid://du3kqivc286dg" path="res://Assets/teardrop_yellow.png" id="12_tnxc6"]
 [ext_resource type="Texture2D" uid="uid://c7suillw3dfa0" path="res://Assets/teardrop_green.png" id="13_3j14s"]
+[ext_resource type="AudioStream" uid="uid://bkuojroqbaoxu" path="res://Audio/237927__foolboymedia__messy-splat-3.wav" id="14_6upfr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3lat"]
 radius = 13.0
@@ -42,6 +43,7 @@ max_drop_time = 0.25
 player_textures = Array[Texture]([ExtResource("2_75cta"), ExtResource("3_ckjsq"), ExtResource("4_66v2b"), ExtResource("5_32fjh")])
 hand_textures = Array[Texture]([ExtResource("6_tnxc6"), ExtResource("7_3j14s"), ExtResource("8_1dcqm"), ExtResource("9_sqpsa")])
 blood_textures = Array[Texture]([ExtResource("3_i4nf8"), ExtResource("11_32fjh"), ExtResource("12_tnxc6"), ExtResource("13_3j14s")])
+death_sound = ExtResource("14_6upfr")
 look_dampening = 3.5
 look_speed = 60.0
 
