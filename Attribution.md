@@ -1,4 +1,4 @@
-[godot-radial-progress-indicator](https://github.com/daveTheOldCoder/godot-radial-progress-indicator)
+## [godot-radial-progress-indicator](https://github.com/daveTheOldCoder/godot-radial-progress-indicator)
 
 MIT License
 
@@ -22,3 +22,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## [Messy Splat 3](https://freesound.org/people/FoolBoyMedia/sounds/237927/)
+
+Messy Splat 3 by FoolBoyMedia -- https://freesound.org/s/237927/ -- License: Attribution 4.0
