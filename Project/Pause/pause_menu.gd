@@ -21,6 +21,13 @@ var animation_start_time: float = 0.0
 @export var grey_background: ColorRect
 @export var ui_stuff: Control
 
+@export var pause_sound: AudioStream
+@export var pause_sound_vol: float = 0.5
+@export var pause_sound_2: AudioStream
+@export var pause_sound_2_vol: float = 0.5
+@export var unpause_sound: AudioStream
+@export var unpause_sound_vol: float = 0.5
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_child(0).process_mode = Node.PROCESS_MODE_ALWAYS
@@ -88,6 +95,10 @@ func show_pause_menu():
 	animation_end = 0
 	animation_start_time = Time.get_ticks_usec()
 	visible = true
+
+	SoundManager.play_sound(pause_sound, pause_sound_vol, 1.0)
+	SoundManager.play_sound(pause_sound_2, pause_sound_2_vol, 1.0)
+
 	await get_tree().process_frame
 	for button in buttons:
 		button.visible = true
@@ -102,6 +113,9 @@ func hide_pause_menu():
 	animation_start = Engine.time_scale
 	animation_end = 1
 	animation_start_time = Time.get_ticks_usec()
+
+	SoundManager.play_sound(unpause_sound, unpause_sound_vol, 1.0)
+
 	await get_tree().create_timer(animation_duration).timeout
 	visible = false
 

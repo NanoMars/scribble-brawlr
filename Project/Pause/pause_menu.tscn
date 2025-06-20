@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bks6s7cl4jnh2"]
+[gd_scene load_steps=11 format=3 uid="uid://bks6s7cl4jnh2"]
 
 [ext_resource type="Script" uid="uid://nqboquk56kwi" path="res://Pause/pause_menu.gd" id="1_p7eai"]
 [ext_resource type="Theme" uid="uid://db2fjjmacnuni" path="res://Pause/pause_theme.tres" id="2_gcgll"]
+[ext_resource type="AudioStream" uid="uid://cqxo5yapror1j" path="res://Audio/Pause.ogg" id="2_wf3xg"]
+[ext_resource type="AudioStream" uid="uid://cshpx8jja2ct8" path="res://Audio/Pause-2.ogg" id="3_t1kst"]
 [ext_resource type="Texture2D" uid="uid://dcptd7eu0ujv1" path="res://Assets/Characters/red_character.png" id="3_w7bhx"]
 [ext_resource type="Script" uid="uid://cjgotub5tcpbh" path="res://Pause/resume_button.gd" id="4_gcgll"]
+[ext_resource type="AudioStream" uid="uid://dxbntej54y4ck" path="res://Audio/Unpause.ogg" id="4_rfrlo"]
 [ext_resource type="Script" uid="uid://b5vuh6bxgadpa" path="res://Pause/exit_button.gd" id="5_u6jwt"]
 [ext_resource type="PackedScene" uid="uid://ca8pjb2vr83ab" path="res://MainMenu/main_menu.tscn" id="6_6h3e2"]
 
@@ -23,6 +26,11 @@ script = ExtResource("1_p7eai")
 buttons = [NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer/Button"), NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer/Button2")]
 grey_background = NodePath("ColorRect")
 ui_stuff = NodePath("Control")
+pause_sound = ExtResource("2_wf3xg")
+pause_sound_2 = ExtResource("3_t1kst")
+pause_sound_2_vol = 0.25
+unpause_sound = ExtResource("4_rfrlo")
+unpause_sound_vol = 0.3
 player_icon = NodePath("Control/CenterContainer/VBoxContainer/PanelContainer/HBoxContainer/TextureRect")
 
 [node name="ColorRect" type="ColorRect" parent="."]
