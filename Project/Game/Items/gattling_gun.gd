@@ -20,6 +20,8 @@ var initial_player_look_damping# = holder.look_dampening
 var initial_player_look_speed# = holder.look_speed
 
 var overheated: bool = false
+@export var overheat_sound: AudioStream
+@export var overheat_vol: float = 0.3
 
 var button_held: bool = false
 
@@ -52,6 +54,7 @@ func press_held(delta: float, obstacle_distance: float):
 		if temperature >= max_temperature:
 			overheated = true
 			button_held = false
+			SoundManager.play_sound(overheat_sound, overheat_vol)
 		else:
 			fire_timer += delta
 			if fire_timer >= fire_rate:
