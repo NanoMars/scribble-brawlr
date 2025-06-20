@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bks6s7cl4jnh2"]
+[gd_scene load_steps=8 format=3 uid="uid://bks6s7cl4jnh2"]
 
 [ext_resource type="Script" uid="uid://nqboquk56kwi" path="res://Pause/pause_menu.gd" id="1_p7eai"]
 [ext_resource type="Theme" uid="uid://db2fjjmacnuni" path="res://Pause/pause_theme.tres" id="2_gcgll"]
 [ext_resource type="Texture2D" uid="uid://dcptd7eu0ujv1" path="res://Assets/Characters/red_character.png" id="3_w7bhx"]
+[ext_resource type="Script" uid="uid://cjgotub5tcpbh" path="res://Pause/resume_button.gd" id="4_gcgll"]
+[ext_resource type="Script" uid="uid://b5vuh6bxgadpa" path="res://Pause/exit_button.gd" id="5_u6jwt"]
+[ext_resource type="PackedScene" uid="uid://ca8pjb2vr83ab" path="res://MainMenu/main_menu.tscn" id="6_6h3e2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6jwt"]
 content_margin_left = 30.0
@@ -17,8 +20,8 @@ corner_radius_bottom_left = 1000
 
 [node name="CanvasLayer" type="CanvasLayer" node_paths=PackedStringArray("buttons", "player_icon")]
 script = ExtResource("1_p7eai")
-buttons = [NodePath("CenterContainer/VBoxContainer/HBoxContainer/Button"), NodePath("CenterContainer/VBoxContainer/HBoxContainer/Button2")]
-player_icon = NodePath("CenterContainer/VBoxContainer/PanelContainer/HBoxContainer/TextureRect")
+buttons = [NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer/Button"), NodePath("Control/CenterContainer/VBoxContainer/HBoxContainer/Button2")]
+player_icon = NodePath("Control/CenterContainer/VBoxContainer/PanelContainer/HBoxContainer/TextureRect")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -28,58 +31,70 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.313726)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -347.5
-offset_top = -108.0
-offset_right = 347.5
-offset_bottom = 108.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_u6jwt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Control/CenterContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_gcgll")
 theme_override_font_sizes/font_size = 60
 text = "Game paused by "
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/CenterContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_w7bhx")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="Control/CenterContainer/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("pause_manager")]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../Button2")
+focus_neighbor_right = NodePath("../Button2")
 theme = ExtResource("2_gcgll")
 text = "Resume"
+script = ExtResource("4_gcgll")
+pause_manager = NodePath("../../../../..")
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="Control/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../Button")
+focus_neighbor_right = NodePath("../Button")
 theme = ExtResource("2_gcgll")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Exit to main menu"
+text = "Exit to Main Menu"
+script = ExtResource("5_u6jwt")
+main_menu_scene = ExtResource("6_6h3e2")

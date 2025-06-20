@@ -20,11 +20,23 @@ var time_scale_start_time: float = 0.0
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	get_child(0).process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(event):
+
+	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
+		var temp_controller_id = event.device
+		if is_paused and temp_controller_id != controller_id:
+			get_viewport().set_input_as_handled()
+			return
+
+
+
 	if event is InputEventJoypadButton:
 		if event.pressed:
 			var temp_controller_id = event.device
+
+
 
 			if temp_controller_id not in pause_menu_held_controller_ids:
 					pause_menu_held_controller_ids[temp_controller_id] = []
@@ -41,24 +53,19 @@ func _input(event):
 					elif is_paused and temp_player_id == player_id:
 						hide_pause_menu()
 					elif is_paused and temp_player_id != player_id:
-						ToastManager.display_toast("Only player " + str(player_id) + " can unpause.") 
+						ToastManager.display_toast("Only player " + str(player_id) + " can unpause.") 		
 
-					ToastManager.display_toast("temp id " + str(temp_player_id) + "normal id" + str(player_id))
-					
-				else:
-					ToastManager.display_toast("Player trying to pause is not in the game.")
-				
-			
 				if event.button_index not in pause_menu_held_controller_ids[temp_controller_id]:
 					pause_menu_held_controller_ids[temp_controller_id].append(event.button_index)
+
 			elif event.button_index == back_button:
 				if controller_id in PlayerManager.joined_players:
 					var temp_player_id: int = PlayerManager.joined_players[temp_controller_id]
 					if is_paused and temp_player_id == player_id and back_button not in pause_menu_held_controller_ids[temp_controller_id]:
 						hide_pause_menu()
-						ToastManager.display_toast("Unpaused game.")
 					elif is_paused and temp_player_id != player_id:
 						ToastManager.display_toast("Only player " + str(player_id) + " can unpause.")
+
 		elif not event.pressed:
 			var temp_controller_id = event.device
 
@@ -70,20 +77,22 @@ func _input(event):
 @export var player_icon: TextureRect
 
 func show_pause_menu():
+
 	is_paused = true
 	player_icon.texture = ColourPalette.get_player_texture(player_id - 1)
 
 	time_scale_start = Engine.time_scale
 	time_scale_end = 0
 	time_scale_start_time = Time.get_ticks_usec()
-
 	visible = true
+	await get_tree().process_frame
+	for button in buttons:
+		button.visible = true
+		button.disabled = false
+		button.process_mode = Node.PROCESS_MODE_ALWAYS
+	if buttons.size() > 0:
+		buttons[0].grab_focus()
 	
-	
-
-	
-	
-
 func hide_pause_menu():
 	is_paused = false
 
@@ -93,7 +102,7 @@ func hide_pause_menu():
 
 	visible = false
 
-func _process(delta: float):
+func _process(_delta: float):
 	
 	var elapsed = (Time.get_ticks_usec() - time_scale_start_time) / 1000000.0
 
