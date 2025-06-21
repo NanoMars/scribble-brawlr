@@ -23,6 +23,7 @@ ColourPalette="*res://scripts/colour_palette.gd"
 GameManager="*res://Game/game_manager.gd"
 ToastManager="*res://Toasts/toast_manager.gd"
 SoundManager="*res://scripts/sound_manager.gd"
+CollisionSoundFinder="*res://scripts/collision_sound_finder.gd"
 
 [display]
 

@@ -9,7 +9,6 @@
 height = 42.1896
 
 [node name="RigidBody2D" instance=ExtResource("1_5pjdu")]
-collision_layer = 3
 script = ExtResource("2_dxp6g")
 usage_duration = 6.0
 projectile_script = ExtResource("3_dxp6g")

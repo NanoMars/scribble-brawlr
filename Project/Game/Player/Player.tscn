@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bjlrp4rn1wl25" path="res://Audio/footsteps/footstep_concrete_003.ogg" id="18_rmqab"]
 [ext_resource type="AudioStream" uid="uid://dkjj20v0gyr31" path="res://Audio/footsteps/footstep_concrete_004.ogg" id="19_vr2vl"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cdlqx"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u78gx"]
 random_pitch = 1.3
 streams_count = 1
 stream_0/stream = ExtResource("14_u78gx")
@@ -54,7 +54,7 @@ max_drop_time = 0.25
 player_textures = Array[Texture]([ExtResource("2_75cta"), ExtResource("3_ckjsq"), ExtResource("4_66v2b"), ExtResource("5_32fjh")])
 hand_textures = Array[Texture]([ExtResource("6_tnxc6"), ExtResource("7_3j14s"), ExtResource("8_1dcqm"), ExtResource("9_sqpsa")])
 blood_textures = Array[Texture]([ExtResource("3_i4nf8"), ExtResource("11_32fjh"), ExtResource("12_tnxc6"), ExtResource("13_3j14s")])
-pickup_sfx = SubResource("AudioStreamRandomizer_cdlqx")
+pickup_sfx = SubResource("AudioStreamRandomizer_u78gx")
 death_sound = ExtResource("14_6upfr")
 footstep_sounds = Array[AudioStream]([ExtResource("15_wg23h"), ExtResource("16_u78gx"), ExtResource("17_cdlqx"), ExtResource("18_rmqab"), ExtResource("19_vr2vl")])
 footstep_sound_vol = 0.06
