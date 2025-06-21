@@ -12,6 +12,9 @@ var following: Node = null
 @export var idle_speed: float = 5000.0
 @export var idle_angle_speed: float = 50.0
 
+@export var pickup_sfx: AudioStream = null
+@export var pickup_sfx_vol: float = 0.5
+
 @onready var score_timer: float = score_duration
 var score_duration: float = 1
 
@@ -32,6 +35,7 @@ func _on_body_entered(body: Node) -> void:
 		if not following:
 			following = body	
 			body.tree_exiting.connect(_disconnect)
+			SoundManager.play_sound(pickup_sfx, pickup_sfx_vol)
 		else:
 			if body not in crown_dibs:
 				crown_dibs.append(body)

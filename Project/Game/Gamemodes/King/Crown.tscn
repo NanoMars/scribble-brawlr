@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bowf2kvpoj14u"]
+[gd_scene load_steps=11 format=3 uid="uid://bowf2kvpoj14u"]
 
 [ext_resource type="Script" uid="uid://r0ck0f7yw48q" path="res://Game/Gamemodes/King/crown.gd" id="1_8m13o"]
 [ext_resource type="Texture2D" uid="uid://c4g5i6e06biie" path="res://Assets/Particle 2.png" id="1_chk4o"]
 [ext_resource type="Texture2D" uid="uid://cvrvs5ilwxvu3" path="res://Assets/Crown.png" id="2_8m13o"]
+[ext_resource type="AudioStream" uid="uid://jq77f28n3a3k" path="res://Audio/glass_001.ogg" id="2_f5j0m"]
 
 [sub_resource type="Curve" id="Curve_f5j0m"]
 _limits = [0.0, 19.8659, 0.0, 1.0]
@@ -39,6 +40,7 @@ close_distance = 5.0
 offset = Vector2(0, -60)
 idle_speed = 7500.0
 idle_angle_speed = 0.2
+pickup_sfx = ExtResource("2_f5j0m")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = 999
