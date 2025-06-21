@@ -13,6 +13,9 @@ var animation_start: float = 1.0
 var animation_end: float = 1.0
 var animation_start_time: float = 0.0
 
+@export var kb_pause_button: int = KEY_ESCAPE
+var kb_pause_held: bool = false
+
 @export var pause_button: int = JOY_BUTTON_START
 @export var back_button: int = JOY_BUTTON_B
 
@@ -32,6 +35,25 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_child(0).process_mode = Node.PROCESS_MODE_ALWAYS
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_WINDOW_FOCUS_OUT:
+		if !is_paused:
+			open_pause_for_player()
+		
+
+func open_pause_for_player(p_id: int = 0):
+	if controller_id in PlayerManager.joined_players:
+		kb_pause_held = true
+		player_id = p_id
+		for cid in PlayerManager.joined_players.keys():
+			if PlayerManager.joined_players[cid] == player_id:
+				controller_id = cid
+				break
+		if !is_paused:
+			show_pause_menu()
+		elif is_paused:
+			hide_pause_menu()
+
 func _input(event):
 
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
@@ -41,7 +63,12 @@ func _input(event):
 			return
 
 
-
+	if event is InputEventKey:
+		if event.pressed and event.keycode == kb_pause_button:
+			if not kb_pause_held:
+				open_pause_for_player()
+		elif not event.pressed and event.keycode == kb_pause_button:
+			kb_pause_held = false
 	if event is InputEventJoypadButton:
 		if event.pressed:
 			var temp_controller_id = event.device
