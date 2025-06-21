@@ -13,10 +13,6 @@ fire_rate = 0.2
 fire_angle_variance = 0.15
 holding_look_dampening = 10.0
 holding_look_speed = 15.0
-overheat_sound = null
-overheat_vol = 0.3
-shoot_sound = null
-shoot_vol = 0.5
 
 [node name="ItemHighlightParticle" parent="." index="0"]
 color = Color(0, 0.571501, 0.835742, 1)
