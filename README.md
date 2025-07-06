@@ -8,12 +8,12 @@
 
   <h1>scribble brawlr</h1>
   <p><em>Chaotic paper brawling fun, right in your browser.</em></p>
-  <div>
+  <div class="badge-row">
     <a href="https://nanomars.github.io/scribble-brawlr/">
-      <img src="Play on Web.svg" alt="Play on Web" height="38">
+      <img src="Play on Web.svg" alt="Play on Web" style="width:auto;height:38px;display:inline-block;">
     </a>
     <a href="https://nanomars.itch.io/scribble-brawlr">
-      <img src="https://static.itch.io/images/badge.svg" alt="Play on Itch.io" height="38">
+      <img src="https://static.itch.io/images/badge.svg" alt="Play on Itch.io" style="width:auto;height:38px;display:inline-block;">
     </a>
   </div>
 
